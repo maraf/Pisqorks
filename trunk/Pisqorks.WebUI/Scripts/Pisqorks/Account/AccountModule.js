@@ -10,7 +10,9 @@ Pisqorks.Account.AccountModule = function () {
                 e.preventDefault();
             })
             .on("hidden", function () {
-                Pisqorks.Application.Router.Navigate("/");
+                if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
+                    Pisqorks.Application.Router.Navigate("/");
+                }
             })
             .modal({ show: false });
     });
@@ -25,7 +27,12 @@ Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar
     navbar.AddButton("Sign in", "/account/login", null, true);
 };
 Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
-    router.RegisterRoute("/account/login", "Sign in", function () {
-        $("#login-modal").modal('show');
+    router.RegisterRoute("/account/login", "Sign in", {
+        OnLoad: function () {
+            $("#login-modal").modal('show');
+        },
+        OnUnload: function () {
+            $("#login-modal").modal('hide');
+        }
     });
 };
