@@ -1,0 +1,51 @@
+﻿html, body {
+    height: 100%;
+}
+
+.all {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -41px;
+}
+
+.head {
+    padding: 0 5px;
+}
+
+.navbar .nav {
+    width: 100%;
+}
+
+    .navbar .nav > li.nav-right {
+        float: right;
+    }
+
+.navbar .navbar-inner {
+    padding: 0;
+}
+
+.content-body {
+    padding: 0 10px;
+}
+
+    .content-body .span6 {
+        width: 450px;
+    }
+
+.foot {
+    height: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #d4d4d4;
+}
+
+/* HOME --------------------------------------------------------------------------------------- */
+
+
+
+/* ACCOUNT - LOGIN ---------------------------------------------------------------------------- */
+
+#login-modal {
+    width: 570px;
+}

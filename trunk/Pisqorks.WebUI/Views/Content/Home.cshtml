@@ -1,0 +1,103 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title></title>
+
+        @Styles.Render("~/stylesheet/libraries")
+        @Scripts.Render("~/javascript/libraries")
+        @Scripts.Render("~/javascript/pisqorks")
+    </head>
+    <body>
+        <div class="all">
+            <div class="container">
+
+                <div class="head">
+                    <h3>
+                        <span class="muted">Pisqorks</span>
+                        -
+                        <span id="sub-title"></span>
+                    </h3>
+
+
+                </div>
+
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <ul class="nav">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
+                <div class="content-body">
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class="foot muted">
+            <div class="container">
+                Pisqorks &copy; 2013 - 1.0
+            </div>
+        </div>
+
+        <div id="login-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>
+                    <span class="muted">Pisqorks</span>
+                    -
+                    <span>Sign in</span>
+                </h3>
+            </div>
+            <div class="modal-body row">
+                <form class="span4">
+                    <input type="text" placeholder="User name" class="input-block-level" />
+                    <input type="password" placeholder="Password" class="input-block-level" />
+
+                    <label class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </label>
+                </form>
+                <div class="span3">
+                    Google account<br />
+                    Facebook<br />
+                    Twitter<br />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Sign in</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+
+        <script>
+
+            var router = new Pisqorks.Router();
+            router.RegisterRoute("/", "Home", function () {
+                alert("Going to home!");
+            });
+            router.RegisterRoute("/account/login", "Sign in", function () {
+                $("#login-modal").modal('show');
+            });
+
+            var navigationBar = new Pisqorks.UI.NavigationBar(".navbar ul.nav", router);
+            navigationBar.AddButton("Home", "/", "home");
+            navigationBar.AddButton("Sign in", "/account/login", null, true);
+
+
+
+            $("#login-modal")
+                .on("hidden", function () {
+                    router.Navigate("/");
+                })
+                .modal({ show: false });
+
+        </script>
+    </body>
+</html>
