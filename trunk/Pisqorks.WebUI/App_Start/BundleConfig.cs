@@ -15,7 +15,9 @@ namespace Pisqorks.WebUI
 
             bundles.Add(new Bundle("~/javascript/pisqorks")
                 .Include("~/Scripts/Pisqorks/*.js")
+                .Include("~/Scripts/Pisqorks/Http/*.js")
                 .Include("~/Scripts/Pisqorks/UI/*.js")
+                .Include("~/Scripts/_Application.js")
             );
 
             bundles.Add(new Bundle("~/stylesheet/libraries")

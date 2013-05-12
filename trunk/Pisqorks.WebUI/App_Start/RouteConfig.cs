@@ -14,6 +14,12 @@ namespace Pisqorks.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Content",
+                url: "Content/{action}",
+                defaults: new { controller = "Content" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{*path}",
                 defaults: new { controller = "Content", action = "Home" }
