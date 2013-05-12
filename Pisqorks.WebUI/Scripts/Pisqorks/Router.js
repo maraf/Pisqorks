@@ -17,7 +17,7 @@ Pisqorks.Router.prototype.Navigate = function (url) {
             document.querySelector("#sub-title").innerHTML = this._routes[i].Title;
 
             history.pushState(null, this._routes[i].Title, url);
-            this._routes[i].Action();
+            this._routes[i].Action({ Url: url, Title: this._routes[i].Title });
         }
     }
 };

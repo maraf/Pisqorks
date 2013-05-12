@@ -1,21 +1,38 @@
 Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
-Pisqorks.UI.NavigationBar = function (selector, router) {
+Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool) {
     this._container = $(selector);
+    this._layout = layout;
     this._router = router;
+    this._requestPool = requestPool;
 };
 Pisqorks.UI.NavigationBar.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.UI.NavigationBar.prototype.AddButton = function (title, url, icon, rightButton) {
     var li = $("<li><a href='" + url + "'>" + this._GetButtonHtml(icon) + title + "</a></li>");
 
     if (this._Default(rightButton, false)) {
-        li.addClass("nav-right");
+        li.addClass("right");
     }
     li.find("a").click(this._ButtonClick.bind(this));
 
     this._container.append(li);
     return li;
+};
+Pisqorks.UI.NavigationBar.prototype.AddRemoteButton = function (title, url, icon, rightButton) {
+    this._router.RegisterRoute(url, title, Pisqorks.UI.NavigationBar.prototype._OnRoute.bind(this));
+    this.AddButton(title, url, icon, rightButton);
+};
+Pisqorks.UI.NavigationBar.prototype._OnRoute = function (e) {
+    var content = this._layout.Content();
+    var request = this._requestPool.Create("/content" + e.Url);
+    request.AddEventListener("success", function (data) {
+        content.html(data.Content);
+    });
+    request.AddEventListener("error", function (data) {
+        content.html(data.Content);
+    });
+    request.Send();
 };
 Pisqorks.UI.NavigationBar.prototype._ButtonClick = function (e) {
     this._router.Navigate(e.currentTarget.href.substr(location.origin.length));

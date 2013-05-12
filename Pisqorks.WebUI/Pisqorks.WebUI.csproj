@@ -152,6 +152,11 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
+    <Content Include="Scripts\Pisqorks\UI\Layout.js" />
+    <Content Include="Scripts\_Application.js" />
+    <Content Include="Scripts\Pisqorks\EventHandler.js" />
+    <Content Include="Scripts\Pisqorks\Http\HttpRequest.js" />
+    <Content Include="Scripts\Pisqorks\Http\RequestPool.js" />
     <Content Include="Scripts\Pisqorks\Router.js" />
     <Content Include="Scripts\Pisqorks\UI\NavigationBar.js" />
     <Content Include="Web.config" />
