@@ -1,12 +1,17 @@
 Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
-Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool) {
+Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool, eventBus) {
+    Pisqorks.BaseObject.call(this);
+
     this._container = $(selector);
     this._layout = layout;
     this._router = router;
     this._requestPool = requestPool;
-};
+    this._eventBus = eventBus;
+
+    this._eventBus.AddEventListener("Navigate", this._OnNavigate.bind(this));
+    };
 Pisqorks.UI.NavigationBar.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.UI.NavigationBar.prototype.AddButton = function (title, url, icon, rightButton) {
     var li = $("<li><a href='" + url + "'>" + this._GetButtonHtml(icon) + title + "</a></li>");
@@ -43,4 +48,8 @@ Pisqorks.UI.NavigationBar.prototype._GetButtonHtml = function (icon) {
         return "";
     }
     return "<i class='icon-" + icon + "'></i> ";
+};
+Pisqorks.UI.NavigationBar.prototype._OnNavigate = function (e) {
+    this._container.find("li").removeClass("active")
+    this._container.find("a[href='" + e.Path + "']").parent().addClass("active");
 };

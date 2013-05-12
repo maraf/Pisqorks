@@ -1,7 +1,10 @@
 var Pisqorks = window.Pisqorks || {};
 
-Pisqorks.Router = function (applicationPath) {
+Pisqorks.Router = function (applicationPath, eventBus) {
+    Pisqorks.BaseObject.call(this);
+
     this._routes = new Array();
+    this._eventBus = eventBus;
     this._applicationPath = this._Default(applicationPath, null);
 
     window.addEventListener("popstate", this._PopState.bind(this));
@@ -18,10 +21,13 @@ Pisqorks.Router.prototype.Navigate = function (url) {
 
             history.pushState(null, this._routes[i].Title, url);
             this._routes[i].Action({ Url: url, Title: this._routes[i].Title });
+
+            this._eventBus.RaiseEvent("Navigate", { Path: url });
         }
     }
 };
 
 Pisqorks.Router.prototype._PopState = function () {
+    this._eventBus.RaiseEvent("Navigate", { Path: location.pathname });
     this.Navigate(location.pathname);
 };
