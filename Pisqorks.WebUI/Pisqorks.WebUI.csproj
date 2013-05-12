@@ -144,6 +144,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\browsers.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
@@ -151,9 +152,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\Pisqorks\BaseModule.js" />
+    <Content Include="Scripts\Pisqorks\Account\AccountModule.js" />
+    <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
+    <Content Include="Scripts\Pisqorks\EventBus.js" />
+    <Content Include="Scripts\Pisqorks\FeatureRequest.js" />
     <Content Include="Scripts\Pisqorks\UI\Layout.js" />
-    <Content Include="Scripts\_Application.js" />
+    <Content Include="Scripts\Pisqorks\Application.js" />
     <Content Include="Scripts\Pisqorks\EventHandler.js" />
     <Content Include="Scripts\Pisqorks\Http\HttpRequest.js" />
     <Content Include="Scripts\Pisqorks\Http\RequestPool.js" />
@@ -169,6 +175,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Content\Home.cshtml" />
+    <Content Include="Views\Content\Login.cshtml" />
+    <Content Include="Views\Content\Feature.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

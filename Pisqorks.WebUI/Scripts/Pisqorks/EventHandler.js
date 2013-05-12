@@ -1,6 +1,8 @@
 var Pisqorks = window.Pisqorks || {};
 
 Pisqorks.EventHandler = function () {
+    Pisqorks.BaseObject.call(this);
+
     this._events = {};
 };
 Pisqorks.EventHandler.prototype = Object.create(Pisqorks.BaseObject.prototype);
