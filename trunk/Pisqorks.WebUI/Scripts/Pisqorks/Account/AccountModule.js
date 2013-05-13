@@ -8,6 +8,12 @@ Pisqorks.Account.AccountModule = function () {
         $("#login-modal")
             .on("submit", function (e) {
                 e.preventDefault();
+
+                var model = {};
+                var manager = new Pisqorks.UI.BindingManager();
+                manager.UpdateModel("#login-modal", model);
+
+                console.log(model);
             })
             .on("hidden", function () {
                 if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
@@ -15,6 +21,7 @@ Pisqorks.Account.AccountModule = function () {
                 }
             })
             .modal({ show: false });
+
     });
 };
 Pisqorks.Account.AccountModule.prototype = Object.create(Pisqorks.BaseModule.prototype);
@@ -25,6 +32,7 @@ Pisqorks.Account.AccountModule.prototype.InitializeFeatures = function (features
 
 Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar) {
     navbar.AddButton("Sign in", "/account/login", null, true);
+    navbar.AddButton("Register", "/account/register", null, true);
 };
 Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
     router.RegisterRoute("/account/login", "Sign in", {

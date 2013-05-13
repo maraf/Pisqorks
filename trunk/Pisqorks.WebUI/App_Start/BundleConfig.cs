@@ -25,6 +25,7 @@ namespace Pisqorks.WebUI
                 .Include("~/Scripts/Pisqorks/Http/*.js")
                 .Include("~/Scripts/Pisqorks/UI/*.js")
                 .Include("~/Scripts/Pisqorks/Account/*.js")
+                .Include("~/Scripts/Pisqorks/Game/*.js")
 
                 .Include("~/Scripts/Pisqorks/Application.js")
 
