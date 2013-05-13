@@ -9,7 +9,8 @@ Pisqorks.Application = {
     RequestPool: new Pisqorks.Http.RequestPool(),
     NavigationBar: null,
     Modules: {
-        Account: new Pisqorks.Account.AccountModule()
+        Account: new Pisqorks.Account.AccountModule(),
+        Game: new Pisqorks.Game.GameModule()
     }
 };
 
@@ -79,7 +80,6 @@ Pisqorks.Application._InitializeNavigation = function () {
     this.NavigationBar = new Pisqorks.UI.NavigationBar(".navbar ul.nav", this.Layout, this.Router, this.RequestPool, this.EventBus);
 
     this.NavigationBar.AddButton("Home", "/", "home");
-    this.NavigationBar.AddRemoteButton("About", "/about", null);
-
     this._RunInModules("InitializeNavigation", [this.NavigationBar]);
+    this.NavigationBar.AddRemoteButton("About", "/about", null);
 };

@@ -13,21 +13,23 @@
     </div>
     <div class="modal-body row">
         <div class="span4">
-            <input type="text" placeholder="User name" class="input-block-level" />
-            <input type="password" placeholder="Password" class="input-block-level" />
+            <input type="text" placeholder="User name" class="input-block-level" data-binding="Username" />
+            <input type="password" placeholder="Password" class="input-block-level" data-binding="Password" />
 
             <label class="checkbox">
-                <input type="checkbox"> Remember me
+                <input type="checkbox" data-binding="Persistent" /> Remember me
             </label>
         </div>
         <div class="span3">
-            Google account<br />
+            Microsoft Live<br />
+            Google<br />
             Facebook<br />
             Twitter<br />
         </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary">Sign in</button>
+        <button class="btn btn-info">Register new account</button>
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
     </div>
 </form>
