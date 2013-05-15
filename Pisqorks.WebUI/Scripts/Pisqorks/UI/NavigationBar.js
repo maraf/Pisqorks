@@ -11,15 +11,15 @@ Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool, eve
     this._eventBus = eventBus;
 
     this._eventBus.AddEventListener("Navigate", this._OnNavigate.bind(this));
-    };
+};
 Pisqorks.UI.NavigationBar.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.UI.NavigationBar.prototype.AddButton = function (title, url, icon, rightButton) {
-    var li = $("<li><a href='" + url + "'>" + this._GetButtonHtml(icon) + title + "</a></li>");
+    var li = $("<li><a href='" + this._router.CreateAppUrl(url) + "'>" + this._GetButtonHtml(icon) + title + "</a></li>");
 
     if (this._Default(rightButton, false)) {
         li.addClass("right");
     }
-    li.find("a").click(this._ButtonClick.bind(this));
+    //li.find("a").click(this._ButtonClick.bind(this));
 
     this._container.append(li);
     return li;
@@ -51,5 +51,5 @@ Pisqorks.UI.NavigationBar.prototype._GetButtonHtml = function (icon) {
 };
 Pisqorks.UI.NavigationBar.prototype._OnNavigate = function (e) {
     this._container.find("li").removeClass("active")
-    this._container.find("a[href='" + e.Path + "']").parent().addClass("active");
+    this._container.find("a[href='" + this._router.CreateAppUrl(e.Path) + "']").parent().addClass("active");
 };
