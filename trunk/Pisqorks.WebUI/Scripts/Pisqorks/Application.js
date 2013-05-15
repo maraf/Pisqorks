@@ -26,7 +26,7 @@ Pisqorks.Application.Start = function () {
         this._InitializeNavigation();
         $(".all").removeClass("hide");
 
-        
+        this.Router.ProcessNavigation();
     }
 };
 
@@ -38,7 +38,7 @@ Pisqorks.Application._RunInModules = function(funcName, params) {
 
 Pisqorks.Application._InitializeFeatures = function () {
     //this.FeatureRequest.Require("TEST", function () { return false }, "Some testing feature that is always missing.");
-    this.FeatureRequest.Require("History", function () { return "history" in window }, "History API for navigating betweent application states.");
+    this.FeatureRequest.Require("History", function () { return "onhashchange" in window }, "History API for navigating between application states.");
     this._RunInModules("InitializeFeatures", [this.FeatureRequest]);
 };
 Pisqorks.Application._CheckFeatures = function () {
@@ -60,6 +60,9 @@ Pisqorks.Application._InitializeRoutes = function () {
 
     this.Router.RegisterRoute("/", "Home", function () {
         Pisqorks.Application.Layout.Content().html("Going to home!");
+    });
+    this.Router.RegisterRoute("/not-found", "Not found", function () {
+        Pisqorks.Application.Layout.Content().html("We are sorry, this page doesn't exist! Try to select from menu where to go...");
     });
     this._RunInModules("InitializeRoutes", [this.Router]);
 };
