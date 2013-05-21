@@ -16,10 +16,10 @@ Pisqorks.Account.AccountModule = function () {
                 console.log(model);
             })
             .on("hidden", function () {
-                //if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
-                //    Pisqorks.Application.Router.Navigate("/");
-                //}
-                history.go(-1);
+                if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
+                    //Pisqorks.Application.Router.Navigate("/");
+                    history.go(-1);
+                }
             })
             .modal({ show: false });
 
