@@ -33,7 +33,7 @@ Pisqorks.Router.prototype._Navigate = function (url, pushState) {
             document.querySelector("#sub-title").innerHTML = this._routes[i].Title;
 
             //history.pushState(null, this._routes[i].Title, url);
-            location.hash = "#" + url;
+            //location.hash = "#" + url;
             var args = { Url: url, Title: this._routes[i].Title };
             if ("OnLoad" in this._routes[i].Action) {
                 this._routes[i].Action.OnLoad(args);
