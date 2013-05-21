@@ -154,6 +154,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\Pisqorks\Account\RegisterPage.js" />
     <Content Include="Scripts\Pisqorks\BaseModule.js" />
     <Content Include="Scripts\Pisqorks\Account\AccountModule.js" />
     <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
@@ -182,6 +183,7 @@
     <Content Include="Views\Content\Home.cshtml" />
     <Content Include="Views\Content\Login.cshtml" />
     <Content Include="Views\Content\Feature.cshtml" />
+    <Content Include="Views\Content\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

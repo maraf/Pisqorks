@@ -4,26 +4,13 @@ Pisqorks.Account = window.Pisqorks.Account || {};
 Pisqorks.Account.AccountModule = function () {
     Pisqorks.BaseModule.call(this);
 
+    this.LoginPage = new Pisqorks.Account.LoginPage();
+    this.RegisterPage = new Pisqorks.Account.RegisterPage();
+
     $(function () {
-        $("#login-modal")
-            .on("submit", function (e) {
-                e.preventDefault();
-
-                var model = {};
-                var manager = new Pisqorks.UI.BindingManager();
-                manager.UpdateModel("#login-modal", model);
-
-                console.log(model);
-            })
-            .on("hidden", function () {
-                if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
-                    //Pisqorks.Application.Router.Navigate("/");
-                    history.go(-1);
-                }
-            })
-            .modal({ show: false });
-
-    });
+        this.LoginPage.Initialize();
+        this.RegisterPage.Initialize();
+    }.bind(this));
 };
 Pisqorks.Account.AccountModule.prototype = Object.create(Pisqorks.BaseModule.prototype);
 
@@ -37,11 +24,11 @@ Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar
 };
 Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
     router.RegisterRoute("/account/login", "Sign in", {
-        OnLoad: function () {
-            $("#login-modal").modal('show');
-        },
-        OnUnload: function () {
-            $("#login-modal").modal('hide');
-        }
+        OnLoad: this.LoginPage.Show.bind(this.LoginPage),
+        OnUnload: this.LoginPage.Hide.bind(this.LoginPage),
+    });
+    router.RegisterRoute("/account/register", "Register new account", {
+        OnLoad: this.RegisterPage.Show.bind(this.RegisterPage),
+        OnUnload: this.RegisterPage.Hide.bind(this.RegisterPage),
     });
 };
