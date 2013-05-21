@@ -18,7 +18,12 @@ Pisqorks.Account.LoginPage.prototype.Initialize = function () {
 
             console.log(model);
         })
+        .on("show", function () {
+
+            setTimeout(function () { $("#login-modal").find("input[type=text]").first().focus(); }, 100);
+        })
         .on("hidden", function () {
+
             if (Pisqorks.Application.Router.IsCurrent("/account/login")) {
                 history.go(-1);
             }
