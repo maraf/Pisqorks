@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pisqorks.Core.DataAccess
 {
-    public interface IAccountRepository
+    public interface IUserLogRepository
     {
-        UserAccount GetLocal(string username, string password);
-        UserAccount Create(UserAccount account);
+        UserLog Create(UserAccount account, bool isPersistent);
     }
 }

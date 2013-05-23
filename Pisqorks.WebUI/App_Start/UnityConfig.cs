@@ -1,4 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
+using Pisqorks.Core.DataAccess;
+using Pisqorks.Core.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,9 @@ namespace Pisqorks.WebUI
 
         private static void RegisterTypes(IUnityContainer container)
         {
-
+            container
+                .RegisterType<IAccountRepository, AccountRepository>()
+                .RegisterType<IUserLogRepository, UserLogRepository>();
         }
     }
 }
