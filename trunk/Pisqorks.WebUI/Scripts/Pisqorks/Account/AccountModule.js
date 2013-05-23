@@ -1,15 +1,17 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Account = window.Pisqorks.Account || {};
 
-Pisqorks.Account.AccountModule = function (eventBus, requestPool) {
+Pisqorks.Account.AccountModule = function (eventBus, requestPool, userContext) {
     Pisqorks.BaseModule.call(this);
 
     this._anonymButtons = [];
     this._userButtons = [];
     this._eventBus = eventBus;
     this._requestPool = requestPool;
+    this._userContext = userContext;
     this.LoginPage = new Pisqorks.Account.LoginPage();
     this.RegisterPage = new Pisqorks.Account.RegisterPage();
+    this.UserInfoView = new Pisqorks.Account.UserInfoView("#user-info-view");
 
     $(function () {
         this.LoginPage.Initialize();
@@ -90,6 +92,10 @@ Pisqorks.Account.AccountModule.prototype.LoadUserState = function () {
         .OnSuccess(this._OnLoadUserState.bind(this))
         .Send();
 };
-Pisqorks.Account.AccountModule.prototype._OnLoadUserState = function () {
+Pisqorks.Account.AccountModule.prototype._OnLoadUserState = function (result) {
+    var context = JSON.parse(result.Content);
+    context.LoggedIn = eval("new " + context.LoggedIn.replace("/", "").replace("/", ""));//TODO: WTF?
 
+    this._eventBus.RaiseEvent("SignIn", context);
+    this.UserInfoView.Update(this._userContext);
 };

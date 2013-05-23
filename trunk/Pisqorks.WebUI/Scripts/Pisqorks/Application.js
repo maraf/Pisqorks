@@ -20,12 +20,11 @@ Pisqorks.Application.Start = function () {
         return;
     }
 
-    this.Modules.Account = new Pisqorks.Account.AccountModule(this.EventBus, this.RequestPool);
+    this.UserContext = new Pisqorks.UserContext(this.EventBus);
+    this.Modules.Account = new Pisqorks.Account.AccountModule(this.EventBus, this.RequestPool, this.UserContext);
 
     this._InitializeFeatures();
     if (this._CheckFeatures()) {
-        this.UserContext = new Pisqorks.UserContext(this.EventBus);
-
         this._InitializeRoutes();
         this._InitializeRequestPool();
         this._InitializeNavigation();

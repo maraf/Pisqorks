@@ -38,7 +38,7 @@ namespace Pisqorks.WebUI.Controllers
         public ActionResult Anonymous()
         {
             UserLog userLog = AccountService.CreateAnonymous();
-            return Json(userLog, JsonRequestBehavior.AllowGet);
+            return Json(new UserContextModel(userLog), JsonRequestBehavior.AllowGet);
         }
     }
 }
