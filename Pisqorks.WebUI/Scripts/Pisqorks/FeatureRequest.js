@@ -13,6 +13,14 @@ Pisqorks.FeatureRequest.prototype.Optional = function (name, checkFunc, message)
     this._Features.push({ Name: name, Required: false, CheckFunc: checkFunc, Message: message });
 };
 Pisqorks.FeatureRequest.prototype.Check = function (name) {
+    if (this._Default(name, null) != null) {
+        for (var i = 0, length = this._Features.length; i < length; i++) {
+            if (this._Features[i].Name == name) {
+                return this._Features[i].CheckFunc();
+            }
+        }
+    }
+
     var required = true;
     var optional = true;
     var missing = new Array();

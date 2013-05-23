@@ -21,6 +21,22 @@ Pisqorks.Http.HttpRequest.prototype.Send = function (data) {
         this._xhr.send(data);
     }
 };
+Pisqorks.Http.HttpRequest.prototype.OnSuccess = function (func) {
+    this.AddEventListener("success", func);
+    return this;
+};
+Pisqorks.Http.HttpRequest.prototype.OnError = function (func) {
+    this.AddEventListener("error", func);
+    return this;
+};
+Pisqorks.Http.HttpRequest.prototype.Header = function (name, value) {
+    this._xhr.setRequestHeader(name, value);
+    return this;
+};
+Pisqorks.Http.HttpRequest.prototype.AuthHeader = function (value) {
+    this.Header("X-AuthToken", value);
+    return this;
+};
 Pisqorks.Http.HttpRequest.prototype._ReadyStateChange = function (e) {
     if (this._xhr.readyState == 1) {
         this._RaiseEvent("opened");

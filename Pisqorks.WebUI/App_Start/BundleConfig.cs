@@ -21,6 +21,7 @@ namespace Pisqorks.WebUI
                 .Include("~/Scripts/Pisqorks/EventBus.js")
                 .Include("~/Scripts/Pisqorks/FeatureRequest.js")
                 .Include("~/Scripts/Pisqorks/Router.js")
+                .Include("~/Scripts/Pisqorks/UserContext.js")
 
                 .Include("~/Scripts/Pisqorks/Http/*.js")
                 .Include("~/Scripts/Pisqorks/UI/*.js")
