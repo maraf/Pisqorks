@@ -14,4 +14,12 @@ namespace Pisqorks.Core
 
         public virtual LocalAccount LocalAccount { get; set; }
     }
+
+    public static class UserAccountExtensions
+    {
+        public static bool IsAnonymous(this UserAccount account)
+        {
+            return account.LocalAccount == null;
+        }
+    }
 }

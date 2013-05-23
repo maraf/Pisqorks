@@ -17,6 +17,7 @@ namespace Pisqorks.WebUI
                 .Include("~/Scripts/Pisqorks/BaseObject.js")
                 .Include("~/Scripts/Pisqorks/BaseModule.js")
 
+                .Include("~/Scripts/Pisqorks/DateFormat.js")
                 .Include("~/Scripts/Pisqorks/EventHandler.js")
                 .Include("~/Scripts/Pisqorks/EventBus.js")
                 .Include("~/Scripts/Pisqorks/FeatureRequest.js")

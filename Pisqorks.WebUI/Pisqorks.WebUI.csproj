@@ -146,6 +146,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Account\UserContextModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityDependencyResolver.cs" />
   </ItemGroup>
@@ -167,11 +168,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\Pisqorks\Account\UserInfoView.js" />
     <Content Include="Scripts\Pisqorks\Account\RegisterPage.js" />
     <Content Include="Scripts\Pisqorks\BaseModule.js" />
     <Content Include="Scripts\Pisqorks\Account\AccountModule.js" />
     <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
+    <Content Include="Scripts\Pisqorks\DateFormat.js" />
     <Content Include="Scripts\Pisqorks\Game\GameModule.js" />
     <Content Include="Scripts\Pisqorks\UI\BindingManager.js" />
     <Content Include="Scripts\Pisqorks\UserContext.js" />
