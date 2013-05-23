@@ -8,8 +8,9 @@ Pisqorks.Application = {
     Router: null,
     RequestPool: new Pisqorks.Http.RequestPool(),
     NavigationBar: null,
+    UserContext: null,
     Modules: {
-        Account: new Pisqorks.Account.AccountModule(),
+        Account: null,
         Game: new Pisqorks.Game.GameModule()
     }
 };
@@ -19,14 +20,20 @@ Pisqorks.Application.Start = function () {
         return;
     }
 
+    this.Modules.Account = new Pisqorks.Account.AccountModule(this.EventBus, this.RequestPool);
+
     this._InitializeFeatures();
     if (this._CheckFeatures()) {
+        this.UserContext = new Pisqorks.UserContext(this.EventBus);
+
         this._InitializeRoutes();
         this._InitializeRequestPool();
         this._InitializeNavigation();
         $(".all").removeClass("hide");
 
         this.Router.ProcessNavigation();
+
+        this.Modules.Account.LoadUserState();
     }
 };
 
