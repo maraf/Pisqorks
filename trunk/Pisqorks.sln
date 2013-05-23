@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1C6ADB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pisqorks.Core", "Pisqorks.Core\Pisqorks.Core.csproj", "{2852F4CC-E6C2-485D-AE52-4859F8B8B439}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pisqorks.Core.DataAccess.InMemory", "Pisqorks.Core.DataAccess.InMemory\Pisqorks.Core.DataAccess.InMemory.csproj", "{F4763D6A-5130-4AAA-9593-4268B87B9128}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{2852F4CC-E6C2-485D-AE52-4859F8B8B439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2852F4CC-E6C2-485D-AE52-4859F8B8B439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2852F4CC-E6C2-485D-AE52-4859F8B8B439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4763D6A-5130-4AAA-9593-4268B87B9128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4763D6A-5130-4AAA-9593-4268B87B9128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4763D6A-5130-4AAA-9593-4268B87B9128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4763D6A-5130-4AAA-9593-4268B87B9128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

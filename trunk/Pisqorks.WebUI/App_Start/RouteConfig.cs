@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AttributeRouting.Web.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,21 +15,16 @@ namespace Pisqorks.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Api",
-                url: "api/{controller}/{action}"
-            );
-
-            routes.MapRoute(
                 name: "Content",
                 url: "Content/{action}",
                 defaults: new { controller = "Content" }
             );
-
             routes.MapRoute(
                 name: "Default",
-                url: "{*path}",
+                url: "",
                 defaults: new { controller = "Content", action = "Home" }
             );
+            //routes.MapAttributeRoutes();
         }
     }
 }
