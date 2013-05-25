@@ -11,6 +11,7 @@ namespace Pisqorks.WebUI
             bundles.Add(new Bundle("~/javascript/libraries")
                 .Include("~/Scripts/bootstrap.js")
                 .Include("~/Scripts/jquery-{version}.js")
+                .Include("~/Scripts/jquery.signalR-{version}.js")
             );
 
             bundles.Add(new Bundle("~/javascript/pisqorks")

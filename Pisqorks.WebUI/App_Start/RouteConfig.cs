@@ -13,6 +13,7 @@ namespace Pisqorks.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapHubs();
 
             routes.MapRoute(
                 name: "Content",
