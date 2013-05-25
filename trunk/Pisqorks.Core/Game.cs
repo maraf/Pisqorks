@@ -15,7 +15,7 @@ namespace Pisqorks.Core
 
         public bool IsPublic { get; set; }
 
-        public int MaxIdle { get; set; }
+        public int? MaxIdle { get; set; }
         public int BoardWidth { get; set; }
         public int BoardHeight { get; set; }
         public int WinningLine { get; set; }
@@ -35,7 +35,7 @@ namespace Pisqorks.Core
             Moves = new List<GameMove>();
         }
 
-        public Game(int boardWidth, int boardHeight, int winningLine, bool isPublic = true, GameShape player1Shape = GameShape.Cross, int maxIdle = 30)
+        public Game(int boardWidth, int boardHeight, int winningLine, bool isPublic = true, GameShape player1Shape = GameShape.Cross, int? maxIdle = null)
             : this()
         {
             BoardWidth = boardWidth;

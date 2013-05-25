@@ -23,7 +23,12 @@ namespace Pisqorks.Core
             StateResolver = stateResolver;
         }
 
-        public Game Create(GameShape player1Shape, bool isPublic, int boardWidth, int boardHeight, int winningLine, int maxIdle)
+        public IEnumerable<Game> GetLobby()
+        {
+            return Games.GetPublic();
+        }
+
+        public Game Create(GameShape player1Shape, bool isPublic, int boardWidth, int boardHeight, int winningLine, int? maxIdle = null)
         {
             if (boardWidth > MinGameSize || boardHeight > MinGameSize || winningLine < MinWinLine)
                 return null;
