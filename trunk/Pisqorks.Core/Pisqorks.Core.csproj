@@ -40,9 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountService.cs" />
+    <Compile Include="DataAccess\IGameRepository.cs" />
     <Compile Include="DataAccess\IUserLogRepository.cs" />
     <Compile Include="DataAccess\IAccountRepository.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="GameMove.cs" />
+    <Compile Include="GameService.cs" />
+    <Compile Include="GameShape.cs" />
+    <Compile Include="IGameStateResolver.cs" />
+    <Compile Include="IUserContext.cs" />
     <Compile Include="LocalAccount.cs" />
+    <Compile Include="PlainGameStateResolver.cs" />
     <Compile Include="UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserLog.cs" />
