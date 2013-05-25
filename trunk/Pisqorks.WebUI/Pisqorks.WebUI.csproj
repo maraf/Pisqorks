@@ -195,7 +195,10 @@
     <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
     <Content Include="Scripts\Pisqorks\DateFormat.js" />
+    <Content Include="Scripts\Pisqorks\Game\PlayPage.js" />
+    <Content Include="Scripts\Pisqorks\Game\GameLobbyView.js" />
     <Content Include="Scripts\Pisqorks\Game\GameModule.js" />
+    <Content Include="Scripts\Pisqorks\Game\GameBoardView.js" />
     <Content Include="Scripts\Pisqorks\UI\BindingManager.js" />
     <Content Include="Scripts\Pisqorks\UserContext.js" />
     <Content Include="Scripts\Pisqorks\EventBus.js" />
