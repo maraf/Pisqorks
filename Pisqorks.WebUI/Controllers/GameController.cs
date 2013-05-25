@@ -1,4 +1,5 @@
-﻿using Pisqorks.Core;
+﻿using AttributeRouting.Web.Mvc;
+using Pisqorks.Core;
 using Pisqorks.WebUI.Models.Game;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Pisqorks.WebUI.Controllers
             GameService = gameService;
         }
 
+        [GET("api/game/lobby")]
         public ActionResult Lobby()
         {
             IEnumerable<Game> games = GameService.GetLobby();

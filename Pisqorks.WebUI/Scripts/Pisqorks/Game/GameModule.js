@@ -1,12 +1,12 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
-Pisqorks.Game.GameModule = function () {
+Pisqorks.Game.GameModule = function (requestPool) {
     Pisqorks.BaseModule.call(this);
 
     $(function() {
         this._playPageRoot = $("<div id='play-page'></div>");
-        this.PlayPage = new Pisqorks.Game.PlayPage(this._playPageRoot);
+        this.PlayPage = new Pisqorks.Game.PlayPage(this._playPageRoot, requestPool);
     }.bind(this))
 };
 Pisqorks.Game.GameModule.prototype = Object.create(Pisqorks.BaseModule.prototype);
