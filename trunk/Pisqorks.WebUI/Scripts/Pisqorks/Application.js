@@ -11,7 +11,7 @@ Pisqorks.Application = {
     UserContext: null,
     Modules: {
         Account: null,
-        Game: new Pisqorks.Game.GameModule()
+        Game: null
     }
 };
 
@@ -22,6 +22,7 @@ Pisqorks.Application.Start = function () {
 
     this.UserContext = new Pisqorks.UserContext(this.EventBus);
     this.Modules.Account = new Pisqorks.Account.AccountModule(this.EventBus, this.RequestPool, this.UserContext);
+    this.Modules.Game = new Pisqorks.Game.GameModule(this.RequestPool);
 
     this._InitializeFeatures();
     if (this._CheckFeatures()) {

@@ -159,6 +159,7 @@
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\GameHub.cs" />
+    <Compile Include="CurrentUserContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

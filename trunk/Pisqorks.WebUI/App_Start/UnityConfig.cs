@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using Pisqorks.Core;
 using Pisqorks.Core.DataAccess;
 using Pisqorks.Core.DataAccess.InMemory;
 using System;
@@ -23,7 +24,9 @@ namespace Pisqorks.WebUI
             container
                 .RegisterType<IAccountRepository, AccountRepository>()
                 .RegisterType<IUserLogRepository, UserLogRepository>()
-                .RegisterType<IGameRepository, GameRepository>();
+                .RegisterType<IGameRepository, GameRepository>()
+                .RegisterType<IUserContext, CurrentUserContext>()
+                .RegisterType<IGameStateResolver, PlainGameStateResolver>();
         }
     }
 }
