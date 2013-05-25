@@ -30,7 +30,9 @@ Pisqorks.Application.Start = function () {
         this._InitializeNavigation();
         $(".all").removeClass("hide");
 
-        this.Router.ProcessNavigation();
+        $(function () {
+            this.Router.ProcessNavigation();
+        }.bind(this));
 
         this.Modules.Account.LoadUserState();
     }

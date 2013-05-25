@@ -5,7 +5,8 @@
 }
 
 .right,
-.navbar .nav > li.right {
+.navbar .nav > li.right,
+.nav-tabs > li.right {
     float: right;
 }
 
