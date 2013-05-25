@@ -22,7 +22,8 @@ namespace Pisqorks.WebUI
         {
             container
                 .RegisterType<IAccountRepository, AccountRepository>()
-                .RegisterType<IUserLogRepository, UserLogRepository>();
+                .RegisterType<IUserLogRepository, UserLogRepository>()
+                .RegisterType<IGameRepository, GameRepository>();
         }
     }
 }
