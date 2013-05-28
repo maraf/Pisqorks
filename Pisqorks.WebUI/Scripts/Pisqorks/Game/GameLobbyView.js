@@ -71,8 +71,8 @@ Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
     }
 };
 Pisqorks.Game.GameLobbyView.prototype._PlayClick = function (e) {
+    Pisqorks.Application.EventBus.RaiseEvent("OpenGame", $(e.currentTarget).data("game-id"));
     e.preventDefault();
-    alert($(e.currentTarget).data("game-id"));
 };
 Pisqorks.Game.GameLobbyView.prototype.ShowCreate = function () {
     $("#game-create-modal").modal('show');
@@ -90,8 +90,7 @@ Pisqorks.Game.GameLobbyView.prototype._OnGameCreated = function (result) {
     this.HideCreate();
 
     var gameID = JSON.parse(result.Content);
-    alert(gameID);
-    //TODO: OpenGame
+    Pisqorks.Application.EventBus.RaiseEvent("OpenGame", gameID);
 };
 Pisqorks.Game.GameLobbyView.prototype._OnGameCreateError = function (result) {
     alert("Sorry, but we are currently unnable to create your game!");
