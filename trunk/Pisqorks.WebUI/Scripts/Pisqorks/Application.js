@@ -31,11 +31,10 @@ Pisqorks.Application.Start = function () {
         this._InitializeNavigation();
         $(".all").removeClass("hide");
 
-        $(function () {
+        this.Modules.Account.LoadUserState(function () {
+            this._RunInModules("Run");
             this.Router.ProcessNavigation();
         }.bind(this));
-
-        this.Modules.Account.LoadUserState();
     }
 };
 

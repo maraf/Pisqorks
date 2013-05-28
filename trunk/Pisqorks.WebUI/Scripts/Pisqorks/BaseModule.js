@@ -12,3 +12,5 @@ Pisqorks.BaseModule.prototype.InitializeNavigation = function (navbar) {
 };
 Pisqorks.BaseModule.prototype.InitializeRoutes = function (router) {
 };
+Pisqorks.BaseModule.prototype.Run = function (router) {
+};

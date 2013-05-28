@@ -12,11 +12,6 @@ Pisqorks.Account.AccountModule = function (eventBus, requestPool, userContext) {
     this.LoginPage = new Pisqorks.Account.LoginPage();
     this.RegisterPage = new Pisqorks.Account.RegisterPage();
     this.UserInfoView = new Pisqorks.Account.UserInfoView("#user-info-view");
-
-    $(function () {
-        this.LoginPage.Initialize();
-        this.RegisterPage.Initialize();
-    }.bind(this));
 };
 Pisqorks.Account.AccountModule.prototype = Object.create(Pisqorks.BaseModule.prototype);
 
@@ -73,13 +68,22 @@ Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
         OnUnload: this.RegisterPage.Hide.bind(this.RegisterPage),
     });
 };
-Pisqorks.Account.AccountModule.prototype.LoadUserState = function () {
+Pisqorks.Account.AccountModule.prototype.Run = function () {
+    this.LoginPage.Initialize();
+    this.RegisterPage.Initialize();
+};
+Pisqorks.Account.AccountModule.prototype.LoadUserState = function (callback) {
+    var onSuccess = function (result) {
+        this._OnLoadUserState(result);
+        callback();
+    }.bind(this);
+
     if (this._features.Check("LocalStorage")) {
         var value = localStorage.getItem("authToken");
         if (value != null) {
             this._requestPool
                 .Create("/api/account/info", "get")
-                .OnSuccess(this._OnLoadUserState.bind(this))
+                .OnSuccess(onSuccess)
                 .AuthHeader(value)
                 .Send();
 
@@ -89,7 +93,7 @@ Pisqorks.Account.AccountModule.prototype.LoadUserState = function () {
 
     this._requestPool
         .Create("/api/account/anonymous", "post")
-        .OnSuccess(this._OnLoadUserState.bind(this))
+        .OnSuccess(onSuccess)
         .Send();
 };
 Pisqorks.Account.AccountModule.prototype._OnLoadUserState = function (result) {
