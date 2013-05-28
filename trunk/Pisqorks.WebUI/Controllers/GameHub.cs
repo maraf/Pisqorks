@@ -8,5 +8,9 @@ namespace Pisqorks.WebUI.Controllers
 {
     public class GameHub : Hub
     {
+        public void PlayerConnected(string gameID, string authToken)
+        {
+
+        }
     }
 }
