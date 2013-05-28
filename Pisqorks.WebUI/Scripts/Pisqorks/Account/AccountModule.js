@@ -94,7 +94,7 @@ Pisqorks.Account.AccountModule.prototype.LoadUserState = function () {
 };
 Pisqorks.Account.AccountModule.prototype._OnLoadUserState = function (result) {
     var context = JSON.parse(result.Content);
-    context.LoggedIn = eval("new " + context.LoggedIn.replace("/", "").replace("/", ""));//TODO: WTF?
+    context.LoggedIn = this._ParseDate(context.LoggedIn) //TODO: WTF?
 
     this._eventBus.RaiseEvent("SignIn", context);
     this.UserInfoView.Update(this._userContext);

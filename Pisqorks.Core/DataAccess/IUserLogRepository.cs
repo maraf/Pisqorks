@@ -9,5 +9,6 @@ namespace Pisqorks.Core.DataAccess
     public interface IUserLogRepository
     {
         UserLog Create(UserAccount account, bool isPersistent);
+        UserLog GetByID(Guid sessionID);
     }
 }

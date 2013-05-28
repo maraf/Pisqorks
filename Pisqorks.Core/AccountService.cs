@@ -26,5 +26,10 @@ namespace Pisqorks.Core
             UserLog userLog = UserLogs.Create(account, true);
             return userLog;
         }
+
+        public UserLog GetByAuthToken(Guid authToken)
+        {
+            return UserLogs.GetByID(authToken);
+        }
     }
 }

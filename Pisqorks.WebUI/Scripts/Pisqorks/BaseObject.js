@@ -8,3 +8,6 @@ Pisqorks.BaseObject.prototype._Default = function (value, defaultValue) {
     }
     return value;
 };
+Pisqorks.BaseObject.prototype._ParseDate = function (value) {
+    return eval("new " + value.replace("/", "").replace("/", ""));
+};

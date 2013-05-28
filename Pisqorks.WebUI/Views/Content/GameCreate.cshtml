@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<form id="game-create-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>
+            <span class="muted">Pisqorks</span>
+            -
+            <span>Create new game</span>
+        </h3>
+    </div>
+    <div class="modal-body">
+        <div class="control-group">
+            <label class="control-label" for="board-width">Board Cols x Rows</label>
+            <div class="controls">
+                <input id="board-width" type="number" min="10" max="100" required="required" placeholder="Board width" class="input-small" data-binding="BoardWidth" />
+                X
+                <input type="number" min="10" max="100" required="required" placeholder="Board height" class="input-small" data-binding="BoardHeight" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label" for="winning-line-length">Winning line length, shape</label>
+            <input id="winning-line-length" type="number" required="required" min="4" max="10" class="input-mini" data-binding="WinningLine" />
+            <select class="input-mini" data-binding="Shape">
+                <option value="Round">O</option>
+                <option value="Cross">X</option>
+            </select>
+        </div>
+            
+        <div class="control-group muted">
+            <label for="max-idle-time">Max idle time</label>
+            
+            <div class="input-append">
+                <input id="max-idle-time" type="number" class="input-mini" data-binding="MaxIdle" disabled="disabled" />
+                <span class="add-on">[s]</span>
+            </div>
+        </div>
+        <label class="checkbox muted">
+            <input type="checkbox" data-binding="IsPublic" disabled="disabled" />
+            Is public game (any one can join you from lobby)
+        </label>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Create game</button>
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+    </div>
+</form>

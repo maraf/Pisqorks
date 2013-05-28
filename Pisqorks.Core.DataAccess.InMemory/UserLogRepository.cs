@@ -16,5 +16,10 @@ namespace Pisqorks.Core.DataAccess.InMemory
             userLogs.Add(userLog);
             return userLog;
         }
+
+        public UserLog GetByID(Guid sessionID)
+        {
+            return userLogs.FirstOrDefault(l => l.SessionID == sessionID);
+        }
     }
 }

@@ -8,8 +8,53 @@ namespace Pisqorks.WebUI
 {
     public class CurrentUserContext : IUserContext
     {
-        public UserLog UserLog { get; set; }
-        public UserAccount UserAccount { get; set; }
-        public bool IsAuthenticated { get; set; }
+        private HttpContext httpContext;
+        private UserLog userLog;
+        private AccountService accountService;
+
+        public UserLog UserLog
+        {
+            get
+            {
+                LoadUserLog();
+                return userLog;
+            }
+        }
+
+        public UserAccount UserAccount
+        {
+            get
+            {
+                LoadUserLog();
+                if (userLog != null) 
+                    return userLog.UserAccount;
+
+                return null;
+            }
+        }
+
+        public bool IsAuthenticated
+        {
+            get
+            {
+                LoadUserLog();
+                return userLog != null;
+            }
+        }
+
+        public CurrentUserContext(HttpContext httpContext, AccountService accountService)
+        {
+            this.httpContext = httpContext;
+            this.accountService = accountService;
+        }
+
+        private void LoadUserLog()
+        {
+            if (userLog != null)
+                return;
+
+            Guid sessionID = Guid.Parse(httpContext.Request.Headers["X-AuthToken"]);
+            userLog = accountService.GetByAuthToken(sessionID);
+        }
     }
 }
