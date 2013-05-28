@@ -62,12 +62,17 @@ Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
                 + "<td>" + data[i].Created.format("dd.MM.yyyy HH:mm") + "</td>"
                 + "<td>" + data[i].BoardWidth + "</td>"
                 + "<td>" + data[i].BoardHeight + "</td>"
-                + "<td>" + data[i].Player1Shape + "</td>"
-                + "<td>Action</td>"
+                + "<td><strong>" + (data[i].Player1Shape == 0 ? "X" : "O") + "</strong> for you</td>"
+                + "<td><a class='btn btn-mini btn-primary' data-game-id='" + data[i].ID + "'>Play!</a></td>"
             + "</tr>";
         }
-        this._table.find("tbody").html(html);
+        this._table.find("tbody").html(html).find("a").click(this._PlayClick.bind(this));
+
     }
+};
+Pisqorks.Game.GameLobbyView.prototype._PlayClick = function (e) {
+    e.preventDefault();
+    alert($(e.currentTarget).data("game-id"));
 };
 Pisqorks.Game.GameLobbyView.prototype.ShowCreate = function () {
     $("#game-create-modal").modal('show');
@@ -82,9 +87,12 @@ Pisqorks.Game.GameLobbyView.prototype._CreateGame = function (model) {
         .Send(JSON.stringify(model));
 };
 Pisqorks.Game.GameLobbyView.prototype._OnGameCreated = function (result) {
+    this.HideCreate();
+
     var gameID = JSON.parse(result.Content);
     alert(gameID);
+    //TODO: OpenGame
 };
 Pisqorks.Game.GameLobbyView.prototype._OnGameCreateError = function (result) {
-    alert("Sorry, but we currently unnable to create your game!");
+    alert("Sorry, but we are currently unnable to create your game!");
 };
