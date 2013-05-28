@@ -12,6 +12,7 @@ Pisqorks.Http.RequestPool.prototype.Create = function (url, method) {
     request.AddEventListener("loading", Pisqorks.Http.RequestPool.prototype._OnLoading.bind(this));
     request.AddEventListener("success", Pisqorks.Http.RequestPool.prototype._OnSuccess.bind(this));
     request.AddEventListener("error", Pisqorks.Http.RequestPool.prototype._OnError.bind(this));
+    request.Header("Content-type", "application/json");
     return request;
 };
 Pisqorks.Http.RequestPool.prototype._OnLoading = function () {

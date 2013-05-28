@@ -1,5 +1,5 @@
 var Pisqorks = window.Pisqorks || {};
-Pisqorks.Game = window.Pisqorks.Account || {};
+Pisqorks.Game = window.Pisqorks.Game || {};
 
 Pisqorks.Game.GameBoardView = function () {
     Pisqorks.BaseObject.call(this);

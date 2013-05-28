@@ -38,6 +38,7 @@ namespace Pisqorks.Core
         public Game(int boardWidth, int boardHeight, int winningLine, bool isPublic = true, GameShape player1Shape = GameShape.Cross, int? maxIdle = null)
             : this()
         {
+            Created = DateTime.Now;
             BoardWidth = boardWidth;
             BoardHeight = boardHeight;
             WinningLine = winningLine;

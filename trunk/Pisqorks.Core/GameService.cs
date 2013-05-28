@@ -25,15 +25,16 @@ namespace Pisqorks.Core
 
         public IEnumerable<Game> GetLobby()
         {
-            return Games.GetPublic();
+            return Games.GetPublic().Where(g => g.Player1 != UserContext.UserAccount);
         }
 
         public Game Create(GameShape player1Shape, bool isPublic, int boardWidth, int boardHeight, int winningLine, int? maxIdle = null)
         {
-            if (boardWidth > MinGameSize || boardHeight > MinGameSize || winningLine < MinWinLine)
+            if (boardWidth < MinGameSize || boardHeight < MinGameSize || winningLine < MinWinLine)
                 return null;
 
             Game game = new Game(boardWidth, boardHeight, winningLine, isPublic, player1Shape, maxIdle);
+            game.Player1 = UserContext.UserAccount;
             Games.Create(game);
             return game;
         }

@@ -72,6 +72,9 @@
     <Reference Include="Microsoft.Practices.Unity.Configuration">
       <HintPath>..\packages\Unity.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
     </Reference>
+    <Reference Include="Neptuo.Unity">
+      <HintPath>..\References\Neptuo.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -224,6 +227,7 @@
     <Content Include="Views\Content\Login.cshtml" />
     <Content Include="Views\Content\Feature.cshtml" />
     <Content Include="Views\Content\Register.cshtml" />
+    <Content Include="Views\Content\GameCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

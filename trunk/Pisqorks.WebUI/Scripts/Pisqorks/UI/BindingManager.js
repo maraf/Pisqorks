@@ -13,6 +13,12 @@ Pisqorks.UI.BindingManager.prototype.BindModel = function (rootSelector, model) 
 
         if ($element.is(":checkbox")) {
             $element.attr("checked", model[$element.data("binding")]);
+        } else if (element.tagName == "select") {
+            $element.find("option").each(function (i, option) {
+                if (option.val() == $element.data("binding")) {
+                    option.select();
+                }
+            });
         } else {
             $element.val(model[$element.data("binding")]);
         }

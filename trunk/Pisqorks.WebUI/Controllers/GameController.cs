@@ -26,12 +26,13 @@ namespace Pisqorks.WebUI.Controllers
             return Json(games, JsonRequestBehavior.AllowGet);
         }
 
+        [POST("api/game/create")]
         public ActionResult Create(CreateModel model)
         {
             if (ModelState.IsValid)
             {
                 Game game = GameService.Create(model.Shape, model.IsPublic, model.BoardWidth, model.BoardHeight, model.WinningLine, model.MaxIdle);
-
+                return Json(game.ID);
             }
             return View();
         }

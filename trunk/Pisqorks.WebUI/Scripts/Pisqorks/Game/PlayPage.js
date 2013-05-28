@@ -1,31 +1,42 @@
 var Pisqorks = window.Pisqorks || {};
-Pisqorks.Game = window.Pisqorks.Account || {};
+Pisqorks.Game = window.Pisqorks.Game || {};
 
-Pisqorks.Game.PlayPage = function (root, requestPool) {
+Pisqorks.Game.PlayPage = function (requestPool) {
     Pisqorks.BaseObject.call(this);
 
+    this.rendered = false;
     this._tabLastID = 1;
-    this._root = $(root);
-    this._Render();
 
     this.LobbyView = new Pisqorks.Game.GameLobbyView(requestPool);
-    this.LobbyView.Render(this._CreateRightTab(this.LobbyView.Title, true));
 
     //TODO: Load current games
 };
 Pisqorks.Game.PlayPage.prototype = Object.create(Pisqorks.BaseObject.prototype);
-Pisqorks.Game.PlayPage.prototype._Render = function () {
-    this._tabs = $("<div class='tabbable'><ul class='nav nav-tabs'></ul><div class='tab-content'></div></div>").appendTo(this._root);
+Pisqorks.Game.PlayPage.prototype.Render = function (root) {
+    if (!this.rendered) {
+        this._tabs = $("<div class='tabbable'><ul class='nav nav-tabs'></ul><div class='tab-content'></div></div>").appendTo(root);
+        this.LobbyView.Render(this._CreateTab(this.LobbyView.Title, true, true));
 
+        this.rendered = true;
+    }
+};
+Pisqorks.Game.PlayPage.prototype._CreateTab = function (title, active, right) {
+    var id = this._tabLastID++;
+    var $li = $(
+        "<li class='"
+        + (this._Default(right, false) ? "right" : "")
+        + (active ? ' active' : '')
+        + "'><a href='#tab"
+        + id + "' data-toggle='tab'>"
+        + title + "</a></li>"
+    ).appendTo(this._tabs.find("ul"));
+    var $content = $(
+        "<div class='tab-pane"
+        + (active ? ' active' : '')
+        + "' id='tab"
+        + id
+        + "'></div>"
+    ).appendTo(this._tabs.find("div.tab-content"));
 
-};
-Pisqorks.Game.PlayPage.prototype._CreateLeftTab = function (title, active) {
-    var id = this._tabLastID++;
-    $("<li class='" + (active ? ' active' : '') + "'><a href='#tab" + id + "' data-toggle='tab'>" + title + "</a></li>").appendTo(this._tabs.find("ul"));
-    return $("<div class='tab-pane" + (active ? ' active' : '') + "' id='tab" + id + "'></div>").appendTo(this._tabs.find("div.tab-content"));
-};
-Pisqorks.Game.PlayPage.prototype._CreateRightTab = function (title, active) {
-    var id = this._tabLastID++;
-    $("<li class='right" + (active ? ' active' : '') + "'><a href='#tab" + id + "' data-toggle='tab'>" + title + "</a></li>").appendTo(this._tabs.find("ul"));
-    return $("<div class='tab-pane" + (active ? ' active' : '') + "' id='tab" + id + "'></div>").appendTo(this._tabs.find("div.tab-content"));
+    return { Tab: $li, Content: $content };
 };
