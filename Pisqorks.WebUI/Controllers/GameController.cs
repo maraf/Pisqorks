@@ -36,5 +36,20 @@ namespace Pisqorks.WebUI.Controllers
             }
             return View();
         }
+
+        [POST("api/game/join")]
+        public ActionResult Join(JoinModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Game game = GameService.AssignPlayer2(model.GameID);
+                return Json(new
+                {
+                    Joined = game != null,
+                    GameID = model.GameID
+                });
+            }
+            return View();
+        }
     }
 }

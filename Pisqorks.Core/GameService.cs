@@ -23,6 +23,11 @@ namespace Pisqorks.Core
             StateResolver = stateResolver;
         }
 
+        public Game Get(Guid gameID)
+        {
+            return Games.Get(gameID);
+        }
+
         public IEnumerable<Game> GetLobby()
         {
             return Games.GetPublic().Where(g => g.Player1 != UserContext.UserAccount);
@@ -57,7 +62,7 @@ namespace Pisqorks.Core
             if (!CanPlayCurrent(game))
                 return null;
 
-            if (game.BoardWidth >= x || game.BoardHeight >= y || !IsEmpty(game, x, y))
+            if (game.BoardWidth <= x || game.BoardHeight <= y || !IsEmpty(game, x, y))
                 return null;
 
             GameMove move = new GameMove(game, UserContext.UserAccount, x, y);
@@ -83,13 +88,16 @@ namespace Pisqorks.Core
             if (!IsActive(game))
                 return false;
 
-            GameMove lastMove = game.Moves.OrderByDescending(m => m.Played).Last();
+            GameMove lastMove = game.Moves.OrderByDescending(m => m.Played).FirstOrDefault();
+            if (lastMove == null)
+                return game.Player1 == UserContext.UserAccount;
+
             return lastMove.Player != UserContext.UserAccount;
         }
 
         private bool IsEmpty(Game game, int x, int y)
         {
-            return game.Moves.Any(m => m.X == x && m.Y == y);
+            return !game.Moves.Any(m => m.X == x && m.Y == y);
         }
     }
 }

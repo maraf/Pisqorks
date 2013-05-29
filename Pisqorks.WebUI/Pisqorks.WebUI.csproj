@@ -169,6 +169,7 @@
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\UserContextModel.cs" />
     <Compile Include="Models\Game\CreateModel.cs" />
+    <Compile Include="Models\Game\JoinModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityDependencyResolver.cs" />
   </ItemGroup>
@@ -199,6 +200,7 @@
     <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
     <Content Include="Scripts\Pisqorks\DateFormat.js" />
+    <Content Include="Scripts\Pisqorks\Game\GameHub.js" />
     <Content Include="Scripts\Pisqorks\Game\PlayPage.js" />
     <Content Include="Scripts\Pisqorks\Game\GameLobbyView.js" />
     <Content Include="Scripts\Pisqorks\Game\GameModule.js" />

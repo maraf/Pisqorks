@@ -9,6 +9,7 @@ namespace Pisqorks.Core.DataAccess.InMemory
     public class AccountRepository : IAccountRepository
     {
         private List<UserAccount> accounts = new List<UserAccount>();
+        private int lastID = 0;
 
         public UserAccount GetLocal(string username, string password)
         {
@@ -17,6 +18,7 @@ namespace Pisqorks.Core.DataAccess.InMemory
 
         public UserAccount Create(UserAccount account)
         {
+            account.ID = ++lastID;
             account.Created = DateTime.Now;
             accounts.Add(account);
             return account;

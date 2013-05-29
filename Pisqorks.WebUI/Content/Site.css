@@ -99,3 +99,23 @@ ul.feature-browserlist {
 #login-modal {
     width: 570px;
 }
+
+/* GAME - BOARD ------------------------------------------------------------------------------- */
+
+.game-board {
+    margin: 0 auto;
+}
+
+.game-board td {
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+    .game-board td.round {
+        background: red;
+    }
+
+    .game-board td.cross {
+        background: blue;
+    }
