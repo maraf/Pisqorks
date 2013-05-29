@@ -45,6 +45,11 @@ namespace Pisqorks.Core
             IsPublic = isPublic;
             Player1Shape = player1Shape;
             MaxIdle = maxIdle;
+
+            if (Player1Shape == GameShape.Cross)
+                Player2Shape = GameShape.Round;
+            else
+                Player2Shape = GameShape.Cross;
         }
     }
 }

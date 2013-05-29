@@ -9,7 +9,7 @@ Pisqorks.Game.GameLobbyView = function (requestPool) {
 };
 Pisqorks.Game.GameLobbyView.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.Game.GameLobbyView.prototype.Render = function (tab) {
-    this._table = $("<table class='table table-condensed table-striped'><thead><tr><th>Player</th><th>Created</th><th>Board W</th><th>Board H</th><th>Shape</th><th></th></tr></thead><tbody></tbody></table>").appendTo(tab.Content);
+    this._table = $("<table class='table table-condensed table-striped'><thead><tr><th>Player</th><th>Created</th><th>Board W</th><th>Board H</th><th>W. Line</th><th>Shape</th><th></th></tr></thead><tbody></tbody></table>").appendTo(tab.Content);
 
     $buttons = $("<div class='control-group'><a class='btn btn-small btn-primary' href='#/play/create'>+ Create</a> <a class='btn btn-small right' href='#/play/refresh'>Refresh</a></div>").appendTo(tab.Content);
     $buttons.find("a[href='#/play/refresh']").click(this._OnRefreshClick.bind(this));
@@ -62,6 +62,7 @@ Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
                 + "<td>" + data[i].Created.format("dd.MM.yyyy HH:mm") + "</td>"
                 + "<td>" + data[i].BoardWidth + "</td>"
                 + "<td>" + data[i].BoardHeight + "</td>"
+                + "<td>" + data[i].WinningLine + "</td>"
                 + "<td><strong>" + (data[i].Player1Shape == 0 ? "X" : "O") + "</strong> for you</td>"
                 + "<td><a class='btn btn-mini btn-primary' data-game-id='" + data[i].ID + "'>Play!</a></td>"
             + "</tr>";
@@ -71,8 +72,20 @@ Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
     }
 };
 Pisqorks.Game.GameLobbyView.prototype._PlayClick = function (e) {
-    Pisqorks.Application.EventBus.RaiseEvent("OpenGame", $(e.currentTarget).data("game-id"));
+    this._requestPool.Create("/api/game/join", "post")
+        .AuthHeader(Pisqorks.Application.UserContext.AuthToken)
+        .OnSuccess(this._OnGameJoin.bind(this))
+        .Send(JSON.stringify({ GameID: $(e.currentTarget).data("game-id") }));
+
     e.preventDefault();
+};
+Pisqorks.Game.GameLobbyView.prototype._OnGameJoin = function (result) {
+    var status = JSON.parse(result.Content);
+    if (status.Joined) {
+        Pisqorks.Application.EventBus.RaiseEvent("OpenGame", status.GameID);
+    } else {
+        alert("Game is propably taken by other players...");
+    }
 };
 Pisqorks.Game.GameLobbyView.prototype.ShowCreate = function () {
     $("#game-create-modal").modal('show');

@@ -42,10 +42,17 @@ namespace Pisqorks.WebUI
             }
         }
 
+        protected string AuthToken { get; set; }
+
         public CurrentUserContext(HttpContext httpContext, AccountService accountService)
         {
             this.httpContext = httpContext;
             this.accountService = accountService;
+        }
+
+        public void SetAuthToken(string token)
+        {
+            AuthToken = token;
         }
 
         private void LoadUserLog()
@@ -53,7 +60,7 @@ namespace Pisqorks.WebUI
             if (userLog != null)
                 return;
 
-            Guid sessionID = Guid.Parse(httpContext.Request.Headers["X-AuthToken"]);
+            Guid sessionID = Guid.Parse(AuthToken ?? httpContext.Request.Headers["X-AuthToken"]);
             userLog = accountService.GetByAuthToken(sessionID);
         }
     }

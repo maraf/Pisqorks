@@ -7,6 +7,7 @@ Pisqorks.Game.PlayPage = function (requestPool) {
     this.rendered = false;
     this._tabLastID = 1;
     this._requestPool = requestPool;
+    this._gameHub = new Pisqorks.Game.GameHub();
 
     this.BoardViews = [];
     this.LobbyView = new Pisqorks.Game.GameLobbyView(requestPool);
@@ -44,7 +45,7 @@ Pisqorks.Game.PlayPage.prototype._CreateTab = function (title, active, right) {
     return { Tab: $li, Content: $content };
 };
 Pisqorks.Game.PlayPage.prototype._OnOpenGame = function (gameID) {
-    var view = new Pisqorks.Game.GameBoardView(gameID, requestPool);
+    var view = new Pisqorks.Game.GameBoardView(gameID, this._gameHub, this._requestPool);
     var tab = this._CreateTab(view.Title, false, false);
     view.AddEventListener("TitleChanged", function () { tab.Tab.find("a").html(view.Title); });
     view.AddEventListener("Closed", function () { this._OnCloseGame(tab, view); }.bind(this));
