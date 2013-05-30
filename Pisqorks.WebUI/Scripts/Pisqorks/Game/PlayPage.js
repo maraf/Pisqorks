@@ -7,7 +7,7 @@ Pisqorks.Game.PlayPage = function (requestPool) {
     this.rendered = false;
     this._tabLastID = 1;
     this._requestPool = requestPool;
-    this._gameHub = new Pisqorks.Game.GameHub();
+    this._gameHub = new Pisqorks.Game.GameHub(this._InitializeCurrentGames.bind(this));
 
     this.BoardViews = [];
     this.LobbyView = new Pisqorks.Game.GameLobbyView(requestPool);
@@ -20,13 +20,17 @@ Pisqorks.Game.PlayPage.prototype.Render = function (root) {
     if (!this.rendered) {
         this._tabs = $("<div class='tabbable'><ul class='nav nav-tabs'></ul><div class='tab-content'></div></div>").appendTo(root);
         this.LobbyView.Render(this._CreateTab(this.LobbyView.Title, true, true));
+        this.rendered = true;
 
+        this._InitializeCurrentGames();
+    }
+};
+Pisqorks.Game.PlayPage.prototype._InitializeCurrentGames = function () {
+    if (this.rendered) {
         this._requestPool.Create("/api/game/user", "post")
             .AuthHeader(Pisqorks.Application.UserContext.AuthToken)
             .OnSuccess(this._OnLoadCurrentGames.bind(this))
             .Send();
-
-        this.rendered = true;
     }
 };
 Pisqorks.Game.PlayPage.prototype._CreateTab = function (title, active, right) {

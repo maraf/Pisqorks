@@ -37,7 +37,7 @@ namespace Pisqorks.WebUI.Controllers
                 if (moves.Any())
                 {
                     foreach (GameMove item in moves)
-                        Clients.Caller.moved(gameID, /*item.PlayerName == UserName ? Context.ConnectionId : "aa33s", */item.X, item.Y);
+                        Clients.Caller.moved(gameID, GetMoveShape(item), item.X, item.Y);
                 }
 
                 if (game.Player2 != null)
@@ -72,6 +72,14 @@ namespace Pisqorks.WebUI.Controllers
                 return game.Player1Shape;
             else
                 return game.Player2Shape;
+        }
+
+        protected GameShape GetMoveShape(GameMove move)
+        {
+            if (move.Game.Player1 == move.Player)
+                return move.Game.Player1Shape;
+            else
+                return move.Game.Player2Shape;
         }
 
         protected bool CanPlay(Game game)

@@ -1,7 +1,7 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
-Pisqorks.Game.GameHub = function () {
+Pisqorks.Game.GameHub = function (callback) {
     Pisqorks.BaseObject.call(this);
 
     this._boards = {};
@@ -12,7 +12,7 @@ Pisqorks.Game.GameHub = function () {
     this._hub.client.initialize = this._InitializeGame.bind(this);
     this._hub.client.moved = this._Moved.bind(this);
 
-    $.connection.hub.start();
+    $.connection.hub.start().done(callback);
     //TODO: Pri kliku na policko, zobrazit jen "loading" na te pozici a potvrdit az prijetim ze serveru
 };
 Pisqorks.Game.GameHub.prototype = Object.create(Pisqorks.BaseObject.prototype);
