@@ -34,7 +34,7 @@ Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar
 Pisqorks.Account.AccountModule.prototype._OnSignIn = function (context) {
     var anonymButton = true;
     var userButton = false;
-    if (context.IsAuthneticated) {
+    if (context.IsAuthneticated || context.IsAnonymous) {
         if (!context.IsAnonymous) {
             userButton = true;
             anonymButton = false;
