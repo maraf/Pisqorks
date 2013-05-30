@@ -37,7 +37,7 @@ namespace Pisqorks.WebUI.Controllers
                 if (moves.Any())
                 {
                     foreach (GameMove item in moves)
-                        Clients.Caller.moved(gameID, GetMoveShape(item), item.X, item.Y);
+                        Clients.Caller.moved(gameID, GetShape(item.Game, item.Player), item.X, item.Y);
                 }
 
                 if (game.Player2 != null)
@@ -46,6 +46,9 @@ namespace Pisqorks.WebUI.Controllers
                     Clients.Caller.startGame(gameID, GetOponentUsername(game), CanPlay(game));
                     Clients.Group(gameID.ToString(), Context.ConnectionId).startGame(gameID, UserContext.UserAccount.Username, !CanPlay(game));
                 }
+
+                if (game.Winner != null)
+                    Clients.Group(gameID.ToString()).winner(gameID, GetShape(game, game.Winner));
             }
             else
             {
@@ -74,12 +77,12 @@ namespace Pisqorks.WebUI.Controllers
                 return game.Player2Shape;
         }
 
-        protected GameShape GetMoveShape(GameMove move)
+        protected GameShape GetShape(Game game, UserAccount account)
         {
-            if (move.Game.Player1 == move.Player)
-                return move.Game.Player1Shape;
+            if (game.Player1 == account)
+                return game.Player1Shape;
             else
-                return move.Game.Player2Shape;
+                return game.Player2Shape;
         }
 
         protected bool CanPlay(Game game)
@@ -96,7 +99,16 @@ namespace Pisqorks.WebUI.Controllers
 
             GameMove move = GameService.ApplyMove(gameID, x, y);
             if (move != null)
+            {
                 Clients.Group(gameID.ToString()).moved(gameID, GetPlayerShape(move.Game), x, y);
+
+                if (move.Game.Winner != null)
+                    Clients.Group(gameID.ToString()).winner(gameID, GetShape(move.Game, move.Game.Winner));
+            }
+            else
+            {
+                Clients.Caller.invalid(gameID);
+            }
         }
     }
 }

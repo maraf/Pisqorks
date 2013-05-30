@@ -11,6 +11,8 @@ Pisqorks.Game.GameHub = function (callback) {
     this._hub.client.startGame = this._StartGame.bind(this);
     this._hub.client.initialize = this._InitializeGame.bind(this);
     this._hub.client.moved = this._Moved.bind(this);
+    this._hub.client.winner = this._Winner.bind(this);
+    this._hub.client.invalid = this._Invalid.bind(this);
 
     $.connection.hub.start().done(callback);
     //TODO: Pri kliku na policko, zobrazit jen "loading" na te pozici a potvrdit az prijetim ze serveru
@@ -31,4 +33,10 @@ Pisqorks.Game.GameHub.prototype.Move = function (gameID, x, y) {
 };
 Pisqorks.Game.GameHub.prototype._Moved = function (gameID, shape, x, y) {
     this._boards[gameID]._Moved(shape, x, y);
+};
+Pisqorks.Game.GameHub.prototype._Winner = function (gameID, shape) {
+    this._boards[gameID]._Winner(shape);
+};
+Pisqorks.Game.GameHub.prototype._Invalid = function (gameID) {
+    this._boards[gameID]._Invalid();
 };

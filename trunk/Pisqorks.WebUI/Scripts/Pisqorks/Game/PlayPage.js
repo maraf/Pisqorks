@@ -19,7 +19,8 @@ Pisqorks.Game.PlayPage.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.Game.PlayPage.prototype.Render = function (root) {
     if (!this.rendered) {
         this._tabs = $("<div class='tabbable'><ul class='nav nav-tabs'></ul><div class='tab-content'></div></div>").appendTo(root);
-        this.LobbyView.Render(this._CreateTab(this.LobbyView.Title, true, true));
+        this._lobbyTab = this._CreateTab(this.LobbyView.Title, true, true);
+        this.LobbyView.Render(this._lobbyTab);
         this.rendered = true;
 
         this._InitializeCurrentGames();
@@ -58,7 +59,7 @@ Pisqorks.Game.PlayPage.prototype._OnOpenGame = function (gameID) {
     var tab = this._CreateTab(view.Title, false, false);
     view.AddEventListener("TitleChanged", function () { tab.Tab.find("a").html(view.Title); });
     view.AddEventListener("Closed", function () { this._OnCloseGame(tab, view); }.bind(this));
-    view.Render(tab.Content);
+    view.Render(tab);
     this.BoardViews.push(view);
 };
 Pisqorks.Game.PlayPage.prototype._OnCloseGame = function (tab, view) {
@@ -69,6 +70,7 @@ Pisqorks.Game.PlayPage.prototype._OnCloseGame = function (tab, view) {
             this.BoardViews[i] = null;
         }
     }
+    this._lobbyTab.Tab.find("a").tab('show');
 };
 Pisqorks.Game.PlayPage.prototype._OnLoadCurrentGames = function (result) {
     var games = JSON.parse(result.Content);
