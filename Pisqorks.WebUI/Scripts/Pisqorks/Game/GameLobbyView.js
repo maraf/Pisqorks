@@ -41,7 +41,7 @@ Pisqorks.Game.GameLobbyView.prototype._OnRefreshClick = function (e) {
     this._LoadGames();
 };
 Pisqorks.Game.GameLobbyView.prototype._LoadGames = function () {
-    this._table.find("tbody").html("<tr><td colspan='5'>Loading games ...</td></tr>");
+    this._table.find("tbody").html("<tr><td colspan='6'>Loading games ...</td></tr>");
 
     this._requestPool.Create("/api/game/lobby", "get")
         .AuthHeader(Pisqorks.Application.UserContext.AuthToken)
@@ -50,8 +50,8 @@ Pisqorks.Game.GameLobbyView.prototype._LoadGames = function () {
 };
 Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
     var data = JSON.parse(result.Content);
-    if (data == null) {
-        this._table.find("tbody").html("<tr><td colspan='5'>No games...</td></tr>");
+    if (data == null || data.length == 0) {
+        this._table.find("tbody").html("<tr><td colspan='6'>No games...</td></tr>");
     } else {
         var html = "";
         for (var i = 0; i < data.length; i++) {
