@@ -107,15 +107,16 @@ ul.feature-browserlist {
 }
 
 .game-board td {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border: 1px solid black;
+    background: no-repeat 1px 1px;
 }
 
     .game-board td.round {
-        background: red;
+        background-image: url("images/round.png");
     }
 
     .game-board td.cross {
-        background: blue;
+        background-image: url("images/cross.png");
     }

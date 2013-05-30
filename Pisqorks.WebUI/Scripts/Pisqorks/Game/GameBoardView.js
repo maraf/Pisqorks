@@ -15,7 +15,9 @@ Pisqorks.Game.GameBoardView = function (gameID, gameHub, requestPool) {
 Pisqorks.Game.GameBoardView.prototype = Object.create(Pisqorks.EventHandler.prototype);
 Pisqorks.Game.GameBoardView.prototype._SetTitle = function (title) {
     this.Title = title;
-    this._RaiseEvent("TitleChanged", title);
+
+    if (this._Default(this._tabRoot, null) != null)
+        this._tabRoot.find("a").html(title);
 };
 Pisqorks.Game.GameBoardView.prototype._SetMessage = function (message, type) {
     this._messageBox.html(message);
@@ -91,6 +93,7 @@ Pisqorks.Game.GameBoardView.prototype._Winner = function (shape) {
     } else {
         this._SetMessage("You have lost this game!" + anchor, "alert-error");
     }
+
     this._messageBox.find("button").click(function () {
         this._RaiseEvent("Closed");
     }.bind(this));

@@ -181,6 +181,8 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\round.png" />
+    <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\browsers.png" />
@@ -200,6 +202,9 @@
     <Content Include="Scripts\Pisqorks\Account\LoginPage.js" />
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
     <Content Include="Scripts\Pisqorks\DateFormat.js" />
+    <Content Include="Scripts\Pisqorks\Game\BaseTabPage.js" />
+    <Content Include="Scripts\Pisqorks\Game\PlayedGamesView.js" />
+    <Content Include="Scripts\Pisqorks\Game\StatsPage.js" />
     <Content Include="Scripts\Pisqorks\Game\GameHub.js" />
     <Content Include="Scripts\Pisqorks\Game\PlayPage.js" />
     <Content Include="Scripts\Pisqorks\Game\GameLobbyView.js" />
