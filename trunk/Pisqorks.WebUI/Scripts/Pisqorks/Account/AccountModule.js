@@ -34,9 +34,11 @@ Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar
 Pisqorks.Account.AccountModule.prototype._OnSignIn = function (context) {
     var anonymButton = true;
     var userButton = false;
-    if (context.IsAuthneticated && !context.IsAnonymous) {
-        userButton = true;
-        anonymButton = false;
+    if (context.IsAuthneticated) {
+        if (!context.IsAnonymous) {
+            userButton = true;
+            anonymButton = false;
+        }
         
         if (this._features.Check("LocalStorage")) {
             localStorage.setItem("authToken", context.AuthToken);
@@ -84,6 +86,12 @@ Pisqorks.Account.AccountModule.prototype.LoadUserState = function (callback) {
             this._requestPool
                 .Create("/api/account/info", "get")
                 .OnSuccess(onSuccess)
+                .OnError(function () {
+                    this._requestPool
+                        .Create("/api/account/anonymous", "post")
+                        .OnSuccess(onSuccess)
+                        .Send();
+                }.bind(this))
                 .AuthHeader(value)
                 .Send();
 
@@ -98,7 +106,7 @@ Pisqorks.Account.AccountModule.prototype.LoadUserState = function (callback) {
 };
 Pisqorks.Account.AccountModule.prototype._OnLoadUserState = function (result) {
     var context = JSON.parse(result.Content);
-    context.LoggedIn = this._ParseDate(context.LoggedIn) //TODO: WTF?
+    context.LoggedIn = this._ParseDate(context.LoggedIn)
 
     this._eventBus.RaiseEvent("SignIn", context);
     this.UserInfoView.Update(this._userContext);

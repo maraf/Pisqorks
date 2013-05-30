@@ -21,7 +21,7 @@ Pisqorks.Game.GameBoardView.prototype.Render = function (root) {
     this._root = $(root);
 };
 Pisqorks.Game.GameBoardView.prototype._StartGame = function (userName2, canPlay) {
-    this._SetTitle("vs " + userName2);
+    this._SetTitle("Me vs " + userName2);
     this._ChangeCanPlay(canPlay);
 };
 Pisqorks.Game.GameBoardView.prototype._InitializeGame = function (width, height, winningLine, shape) {

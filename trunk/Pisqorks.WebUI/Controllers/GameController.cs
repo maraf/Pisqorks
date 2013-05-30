@@ -51,5 +51,11 @@ namespace Pisqorks.WebUI.Controllers
             }
             return View();
         }
+
+        [POST("api/game/user")]
+        public ActionResult UserGames()
+        {
+            return Json(GameService.GetUserActive().Select(g => g.ID));
+        }
     }
 }
