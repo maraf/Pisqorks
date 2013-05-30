@@ -12,16 +12,24 @@ namespace Pisqorks.WebUI.Models.Account
         public string Username { get; set; }
         public DateTime LoggedIn { get; set; }
         public bool IsAnonymous { get; set; }
+        public bool IsAuthenticated { get; set; }
 
         public UserContextModel()
         { }
 
         public UserContextModel(UserLog userLog)
         {
-            AuthToken = userLog.SessionID;
-            Username = userLog.UserAccount.Username;
-            LoggedIn = userLog.LoggedIn;
-            IsAnonymous = userLog.UserAccount.IsAnonymous();
+            if (userLog != null)
+            {
+                AuthToken = userLog.SessionID;
+                Username = userLog.UserAccount.Username;
+                LoggedIn = userLog.LoggedIn;
+                IsAnonymous = userLog.UserAccount.IsAnonymous();
+            }
+            else
+            {
+                IsAuthenticated = false;
+            }
         }
     }
 }

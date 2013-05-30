@@ -28,6 +28,11 @@ namespace Pisqorks.Core
             return Games.Get(gameID);
         }
 
+        public IEnumerable<Game> GetUserActive()
+        {
+            return Games.GetActive().Where(g => g.Player1 == UserContext.UserAccount || g.Player2 == UserContext.UserAccount);
+        }
+
         public IEnumerable<Game> GetLobby()
         {
             return Games.GetPublic().Where(g => g.Player1 != UserContext.UserAccount);

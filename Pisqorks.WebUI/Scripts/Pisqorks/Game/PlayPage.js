@@ -21,6 +21,11 @@ Pisqorks.Game.PlayPage.prototype.Render = function (root) {
         this._tabs = $("<div class='tabbable'><ul class='nav nav-tabs'></ul><div class='tab-content'></div></div>").appendTo(root);
         this.LobbyView.Render(this._CreateTab(this.LobbyView.Title, true, true));
 
+        this._requestPool.Create("/api/game/user", "post")
+            .AuthHeader(Pisqorks.Application.UserContext.AuthToken)
+            .OnSuccess(this._OnLoadCurrentGames.bind(this))
+            .Send();
+
         this.rendered = true;
     }
 };
@@ -59,5 +64,11 @@ Pisqorks.Game.PlayPage.prototype._OnCloseGame = function (tab, view) {
         if (this.BoardViews[i] == view) {
             this.BoardViews[i] = null;
         }
+    }
+};
+Pisqorks.Game.PlayPage.prototype._OnLoadCurrentGames = function (result) {
+    var games = JSON.parse(result.Content);
+    for (var i = 0; i < games.length; i++) {
+        Pisqorks.Application.EventBus.RaiseEvent("OpenGame", games[i]);
     }
 };

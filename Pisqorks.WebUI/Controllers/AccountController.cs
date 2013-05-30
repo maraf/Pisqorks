@@ -14,10 +14,12 @@ namespace Pisqorks.WebUI.Controllers
     public class AccountController : Controller
     {
         protected AccountService AccountService { get; private set; }
+        protected IUserContext UserContext { get; private set; }
 
-        public AccountController(AccountService accountService)
+        public AccountController(AccountService accountService, IUserContext userContext)
         {
             AccountService = accountService;
+            UserContext = userContext;
         }
 
         [HttpPost]
@@ -28,17 +30,20 @@ namespace Pisqorks.WebUI.Controllers
             return null;
         }
 
-        public ActionResult Info()
-        {
-            return View();
-        }
-
         [POST("api/account/anonymous")]
-        [HttpPost]
         public ActionResult Anonymous()
         {
             UserLog userLog = AccountService.CreateAnonymous();
             return Json(new UserContextModel(userLog), JsonRequestBehavior.AllowGet);
+        }
+
+        [GET("api/account/info")]
+        public ActionResult Info()
+        {
+            if (UserContext.UserLog == null)
+                return new HttpStatusCodeResult(404);
+
+            return Json(new UserContextModel(UserContext.UserLog), JsonRequestBehavior.AllowGet);
         }
     }
 }
