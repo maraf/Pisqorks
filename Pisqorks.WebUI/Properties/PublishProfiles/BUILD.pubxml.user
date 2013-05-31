@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>05/12/2013 09:29:45</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>05/31/2013 09:04:17</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>05/31/2013 09:04:17</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.dll">
+      <publishTime>05/23/2013 10:20:24</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.Web.dll">
+      <publishTime>05/23/2013 10:20:24</publishTime>
+    </File>
+    <File Include="bin/AttributeRouting.Web.Mvc.dll">
+      <publishTime>05/23/2013 10:20:24</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>05/25/2013 10:32:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Owin.dll">
+      <publishTime>05/25/2013 10:32:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>05/25/2013 10:32:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>05/25/2013 10:32:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.Configuration.dll">
+      <publishTime>05/12/2013 09:36:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.Unity.dll">
+      <publishTime>05/12/2013 09:36:08</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Mvc.FixedDisplayModes.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/Neptuo.Unity.dll">
+      <publishTime>05/28/2013 13:48:05</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>05/25/2013 10:32:08</publishTime>
+    </File>
+    <File Include="bin/Pisqorks.Core.DataAccess.InMemory.dll">
+      <publishTime>05/31/2013 08:58:41</publishTime>
+    </File>
+    <File Include="bin/Pisqorks.Core.dll">
+      <publishTime>05/31/2013 08:58:41</publishTime>
+    </File>
+    <File Include="bin/Pisqorks.WebUI.dll">
+      <publishTime>05/31/2013 09:03:54</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>05/12/2013 09:21:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>05/12/2013 09:21:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>05/12/2013 09:21:06</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>05/12/2013 09:31:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>05/12/2013 09:21:05</publishTime>
+    </File>
+    <File Include="bin/WebActivator.dll">
+      <publishTime>05/23/2013 10:20:24</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>05/12/2013 09:29:45</publishTime>
+    </File>
+    <File Include="Content/bootstrap-responsive.css">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/bootstrap-responsive.min.css">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/images/browsers.png">
+      <publishTime>05/12/2013 14:54:35</publishTime>
+    </File>
+    <File Include="Content/images/cross.png">
+      <publishTime>05/30/2013 21:34:29</publishTime>
+    </File>
+    <File Include="Content/images/glyphicons-halflings-white.png">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/images/glyphicons-halflings.png">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Content/images/round.png">
+      <publishTime>05/30/2013 21:34:29</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>05/30/2013 21:38:22</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/25/2013 10:32:10</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>05/31/2013 09:04:15</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.js">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.min.js">
+      <publishTime>05/12/2013 09:26:19</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.min.map">
+      <publishTime>05/12/2013 09:26:18</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-1.1.1.js">
+      <publishTime>05/25/2013 10:32:09</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-1.1.1.min.js">
+      <publishTime>05/25/2013 10:32:09</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Account/AccountModule.js">
+      <publishTime>05/30/2013 17:47:37</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Account/LoginPage.js">
+      <publishTime>05/21/2013 13:09:29</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Account/RegisterPage.js">
+      <publishTime>05/21/2013 13:09:26</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Account/UserInfoView.js">
+      <publishTime>05/23/2013 14:47:20</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Application.js">
+      <publishTime>05/28/2013 14:46:25</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/BaseModule.js">
+      <publishTime>05/28/2013 14:43:16</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/BaseObject.js">
+      <publishTime>05/28/2013 13:51:37</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/DateFormat.js">
+      <publishTime>05/23/2013 14:45:37</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/EventBus.js">
+      <publishTime>05/12/2013 16:09:39</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/EventHandler.js">
+      <publishTime>05/12/2013 14:42:18</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/FeatureRequest.js">
+      <publishTime>05/23/2013 10:06:52</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/BaseTabPage.js">
+      <publishTime>05/30/2013 21:51:39</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/GameBoardView.js">
+      <publishTime>05/30/2013 21:26:14</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/GameHub.js">
+      <publishTime>05/30/2013 20:08:25</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/GameLobbyView.js">
+      <publishTime>05/30/2013 20:12:09</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/GameModule.js">
+      <publishTime>05/30/2013 22:03:38</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/PlayedGamesView.js">
+      <publishTime>05/30/2013 22:04:24</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/PlayPage.js">
+      <publishTime>05/30/2013 21:52:03</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/StatsPage.js">
+      <publishTime>05/30/2013 21:59:21</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Http/HttpRequest.js">
+      <publishTime>05/23/2013 10:17:22</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Http/RequestPool.js">
+      <publishTime>05/31/2013 08:56:39</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Router.js">
+      <publishTime>05/21/2013 12:22:12</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/UI/BindingManager.js">
+      <publishTime>05/28/2013 10:29:38</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/UI/Layout.js">
+      <publishTime>05/12/2013 13:01:55</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/UI/NavigationBar.js">
+      <publishTime>05/15/2013 10:46:39</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/UserContext.js">
+      <publishTime>05/23/2013 09:36:37</publishTime>
+    </File>
+    <File Include="Views/Content/Feature.cshtml">
+      <publishTime>05/12/2013 15:27:03</publishTime>
+    </File>
+    <File Include="Views/Content/GameCreate.cshtml">
+      <publishTime>05/28/2013 12:07:28</publishTime>
+    </File>
+    <File Include="Views/Content/Home.cshtml">
+      <publishTime>05/31/2013 09:04:07</publishTime>
+    </File>
+    <File Include="Views/Content/Login.cshtml">
+      <publishTime>05/21/2013 13:10:17</publishTime>
+    </File>
+    <File Include="Views/Content/Register.cshtml">
+      <publishTime>05/21/2013 13:10:55</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>05/12/2013 09:33:31</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>05/31/2013 08:58:41</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
