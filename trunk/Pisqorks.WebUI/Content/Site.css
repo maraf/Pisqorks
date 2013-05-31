@@ -1,5 +1,9 @@
 ﻿/* COMMON ------------------------------------------------------------------------------------- */
 
+.clear {
+    clear: both;
+}
+
 .left {
     float: left;
 }
@@ -31,7 +35,19 @@ html, body, .all {
     padding: 0;
 }
 
-.head, 
+.navbar h3 {
+    display: none;
+}
+
+header h1 {
+    font-size: 24.5px;
+}
+
+header #user-info-view {
+    margin: 10px 0;
+}
+
+header, 
 .content-body {
     padding: 0 10px;
 }
@@ -55,6 +71,69 @@ html, body, .all {
         border-radius: 4px;
     }
 
+article h2 {
+    font-size: 20.5px;
+}
+
+/* HEADER ANIMATION --------------------------------------------------------------------------- */
+
+header h1 {   
+    float: left;
+    transition: all 1s;
+    transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+}
+
+    header h1:hover {
+        transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+/* HEADER AUTO-PISQ --------------------------------------------------------------------------- */
+
+.game-board.game-board-auto {
+    float: left;
+    margin: 10px;
+    opacity: 0.5;
+}
+
+.game-board.game-board-auto td {
+    width: 15px;
+    height: 15px;
+}
+
+.game-board-auto tr:first-child td:first-child {
+    -webkit-animation: playPisq1 5s linear infinite;
+}
+.game-board-auto tr:first-child td:last-child {
+    -webkit-animation: playPisq2 5s linear infinite;
+}
+.game-board-auto tr:last-child td:first-child {
+    -webkit-animation: playPisq3 5s linear infinite;
+}
+.game-board-auto tr:last-child td:last-child {
+    -webkit-animation: playPisq4 5s linear infinite;
+}
+    
+@-webkit-keyframes playPisq1 {
+	0%, 100% { background-image: none; }
+	20%, 40%, 60%, 80% { background-image: url("images/round_15.png"); }
+}
+@-webkit-keyframes playPisq2 {
+	0%, 20%, 100% { background-image: none; }
+	40%, 60%, 80% { background-image: url("images/cross_15.png"); }
+}
+@-webkit-keyframes playPisq4 {
+	0%, 20%, 40%, 100% { background-image: none; }
+	60%, 80% { background-image: url("images/round_15.png"); }
+}
+@-webkit-keyframes playPisq3 {
+	0%, 20%, 40%, 60%, 100% { background-image: none; }
+	80% { background-image: url("images/cross_15.png"); }
+}
+            
 /* HOME --------------------------------------------------------------------------------------- */
 
 /* FEATURES ----------------------------------------------------------------------------------- */
@@ -110,6 +189,7 @@ ul.feature-browserlist {
     width: 30px;
     height: 30px;
     border: 1px solid black;
+    transition: opacity 500ms;
     background: no-repeat 1px 1px;
 }
 
@@ -120,3 +200,7 @@ ul.feature-browserlist {
     .game-board td.cross {
         background-image: url("images/cross.png");
     }
+
+.game-board-disabled td {
+    opacity: 0.3;
+}

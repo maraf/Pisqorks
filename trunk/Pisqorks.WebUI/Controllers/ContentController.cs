@@ -16,9 +16,9 @@ namespace Pisqorks.WebUI.Controllers
             return View();
         }
 
-        public string About()
+        public ActionResult About()
         {
-            return "About Pisqorks game!";
+            return View();
         }
 
     }
