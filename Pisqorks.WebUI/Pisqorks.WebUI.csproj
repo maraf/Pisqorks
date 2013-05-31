@@ -189,6 +189,7 @@
     <Content Include="Content\images\browsers.png" />
     <Content Include="Content\images\round_15.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sounds\champions.mp3" />
     <Content Include="Content\sounds\join.mp3" />
     <Content Include="Content\sounds\win.mp3" />
     <Content Include="Content\sounds\move.mp3" />
@@ -198,6 +199,7 @@
     <Content Include="Content\sounds\win.ogg" />
     <Content Include="Content\sounds\lost.ogg" />
     <Content Include="Content\sounds\join.ogg" />
+    <Content Include="Content\sounds\champions.ogg" />
     <None Include="Properties\PublishProfiles\BUILD.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="anim.html" />
