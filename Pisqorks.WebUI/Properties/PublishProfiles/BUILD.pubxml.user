@@ -8,14 +8,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
   </PropertyGroup>
   <ItemGroup>
+    <File Include="anim.html">
+      <publishTime>05/31/2013 11:40:13</publishTime>
+    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>05/12/2013 09:29:45</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/31/2013 09:04:17</publishTime>
+      <publishTime>05/31/2013 16:49:44</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/31/2013 09:04:17</publishTime>
+      <publishTime>05/31/2013 16:49:44</publishTime>
     </File>
     <File Include="bin/AttributeRouting.dll">
       <publishTime>05/23/2013 10:20:24</publishTime>
@@ -66,7 +69,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2013 08:58:41</publishTime>
     </File>
     <File Include="bin/Pisqorks.WebUI.dll">
-      <publishTime>05/31/2013 09:03:54</publishTime>
+      <publishTime>05/31/2013 16:49:41</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>05/12/2013 09:21:06</publishTime>
@@ -122,6 +125,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/cross.png">
       <publishTime>05/30/2013 21:34:29</publishTime>
     </File>
+    <File Include="Content/images/cross_15.png">
+      <publishTime>05/31/2013 11:51:25</publishTime>
+    </File>
     <File Include="Content/images/glyphicons-halflings-white.png">
       <publishTime>05/12/2013 09:26:19</publishTime>
     </File>
@@ -131,14 +137,47 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/images/round.png">
       <publishTime>05/30/2013 21:34:29</publishTime>
     </File>
+    <File Include="Content/images/round_15.png">
+      <publishTime>05/31/2013 11:51:41</publishTime>
+    </File>
     <File Include="Content/Site.css">
-      <publishTime>05/30/2013 21:38:22</publishTime>
+      <publishTime>05/31/2013 12:24:27</publishTime>
+    </File>
+    <File Include="Content/sounds/champions.mp3">
+      <publishTime>05/31/2013 12:22:38</publishTime>
+    </File>
+    <File Include="Content/sounds/champions.ogg">
+      <publishTime>05/31/2013 12:22:38</publishTime>
+    </File>
+    <File Include="Content/sounds/join.mp3">
+      <publishTime>05/31/2013 10:30:30</publishTime>
+    </File>
+    <File Include="Content/sounds/join.ogg">
+      <publishTime>05/31/2013 10:30:43</publishTime>
+    </File>
+    <File Include="Content/sounds/lost.mp3">
+      <publishTime>05/31/2013 10:28:08</publishTime>
+    </File>
+    <File Include="Content/sounds/lost.ogg">
+      <publishTime>05/31/2013 10:27:46</publishTime>
+    </File>
+    <File Include="Content/sounds/move.mp3">
+      <publishTime>05/31/2013 10:17:36</publishTime>
+    </File>
+    <File Include="Content/sounds/move.ogg">
+      <publishTime>05/31/2013 10:26:00</publishTime>
+    </File>
+    <File Include="Content/sounds/win.mp3">
+      <publishTime>05/31/2013 10:27:59</publishTime>
+    </File>
+    <File Include="Content/sounds/win.ogg">
+      <publishTime>05/31/2013 10:27:37</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>05/25/2013 10:32:10</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/31/2013 09:04:15</publishTime>
+      <publishTime>05/31/2013 16:49:42</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/12/2013 09:26:19</publishTime>
@@ -198,7 +237,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/30/2013 21:51:39</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Game/GameBoardView.js">
-      <publishTime>05/30/2013 21:26:14</publishTime>
+      <publishTime>05/31/2013 12:11:44</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Game/GameHub.js">
       <publishTime>05/30/2013 20:08:25</publishTime>
@@ -239,6 +278,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/Pisqorks/UserContext.js">
       <publishTime>05/23/2013 09:36:37</publishTime>
     </File>
+    <File Include="Views/Content/About.cshtml">
+      <publishTime>05/31/2013 10:12:43</publishTime>
+    </File>
     <File Include="Views/Content/Feature.cshtml">
       <publishTime>05/12/2013 15:27:03</publishTime>
     </File>
@@ -246,7 +288,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/28/2013 12:07:28</publishTime>
     </File>
     <File Include="Views/Content/Home.cshtml">
-      <publishTime>05/31/2013 09:04:07</publishTime>
+      <publishTime>05/31/2013 12:25:26</publishTime>
     </File>
     <File Include="Views/Content/Login.cshtml">
       <publishTime>05/21/2013 13:10:17</publishTime>
