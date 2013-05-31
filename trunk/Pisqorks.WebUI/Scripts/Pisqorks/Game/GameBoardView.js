@@ -79,14 +79,18 @@ Pisqorks.Game.GameBoardView.prototype._OnCellClick = function(e) {
     }
 };
 Pisqorks.Game.GameBoardView.prototype._ChangeCanPlay = function (val) {
-    this._canPlay = val;
-    this._SetMessage(val ? "You move..." : "Waiting for oponents move ...");
+    if (!this._closed) {
+        this._canPlay = val;
+        this._SetMessage(val ? "You move..." : "Waiting for oponents move ...");
 
-    var table = this._root.find("table.game-board");
-    if (val)
+        var table = this._root.find("table.game-board");
+        if (val)
+            table.removeClass("game-board-disabled");
+        else
+            table.addClass("game-board-disabled");
+    } else {
         table.removeClass("game-board-disabled");
-    else 
-        table.addClass("game-board-disabled");
+    }
 };
 Pisqorks.Game.GameBoardView.prototype._Moved = function (shape, x, y) {
     this._root.find("td[data-x=" + x + "][data-y=" + y + "]").addClass(shape == 0 ? "round" : "cross");
@@ -122,6 +126,8 @@ Pisqorks.Game.GameBoardView.prototype._Winner = function (shape) {
     this._messageBox.find("button").click(function () {
         this._RaiseEvent("Closed");
     }.bind(this));
+    this._closed = true;
+    this._ChangeCanPlay(false);
 };
 Pisqorks.Game.GameBoardView.prototype._Invalid = function (shape) {
     this._ChangeCanPlay(true);
