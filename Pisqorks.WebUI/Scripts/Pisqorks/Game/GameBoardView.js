@@ -79,11 +79,11 @@ Pisqorks.Game.GameBoardView.prototype._OnCellClick = function(e) {
     }
 };
 Pisqorks.Game.GameBoardView.prototype._ChangeCanPlay = function (val) {
+    var table = this._root.find("table.game-board");
     if (!this._closed) {
         this._canPlay = val;
         this._SetMessage(val ? "You move..." : "Waiting for oponents move ...");
 
-        var table = this._root.find("table.game-board");
         if (val)
             table.removeClass("game-board-disabled");
         else
