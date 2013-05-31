@@ -255,3 +255,35 @@ ul.feature-browserlist {
 .game-board-disabled td {
     opacity: 0.5;
 }
+
+/* MAKE IT SMALLER ---------------------------------------------------------------------------- */
+
+@media (max-width:980px) {
+
+    .container {
+        width: 682px;
+    }
+
+}
+
+
+@media (max-width:682px) {
+    
+    .container {
+        width: 500px;
+    }
+
+    .game-board td {
+        width: 15px;
+        height: 15px;
+    }
+
+        .game-board td.round {
+            background-image: url("images/round_15.png");
+        }
+
+        .game-board td.cross {
+            background-image: url("images/cross_15.png");
+        }
+
+}
