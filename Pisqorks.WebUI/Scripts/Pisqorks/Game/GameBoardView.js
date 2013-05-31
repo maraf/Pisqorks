@@ -41,6 +41,7 @@ Pisqorks.Game.GameBoardView.prototype.Render = function (root) {
 Pisqorks.Game.GameBoardView.prototype._StartGame = function (userName2, canPlay) {
     this._SetTitle("Me vs " + userName2);
     this._ChangeCanPlay(canPlay);
+    this._PlaySound("join");
 };
 Pisqorks.Game.GameBoardView.prototype._InitializeGame = function (width, height, winningLine, shape) {
     this._width = width;
@@ -80,18 +81,42 @@ Pisqorks.Game.GameBoardView.prototype._OnCellClick = function(e) {
 Pisqorks.Game.GameBoardView.prototype._ChangeCanPlay = function (val) {
     this._canPlay = val;
     this._SetMessage(val ? "You move..." : "Waiting for oponents move ...");
+
+    var table = this._root.find("table.game-board");
+    if (val)
+        table.removeClass("game-board-disabled");
+    else 
+        table.addClass("game-board-disabled");
 };
 Pisqorks.Game.GameBoardView.prototype._Moved = function (shape, x, y) {
     this._root.find("td[data-x=" + x + "][data-y=" + y + "]").addClass(shape == 0 ? "round" : "cross");
     this._ChangeCanPlay(shape != this._shape);
+
+    this._PlaySound("move");
+};
+Pisqorks.Game.GameBoardView.prototype._PlaySound = function (baseName) {
+    var basePath = "Content/sounds/";
+    if (this._Default(this._audioPlayer, null) == null) {
+        this._audioPlayer = new Audio();
+    }
+
+    if (this._audioPlayer.canPlayType("audio/mpeg")) {
+        this._audioPlayer.src = basePath + baseName + ".mp3";
+        this._audioPlayer.play();
+    } else if (this._audioPlayer.canPlayType("audio/ogg")) {
+        this._audioPlayer.src = basePath + baseName + ".ogg";
+        this._audioPlayer.play();
+    }
 };
 Pisqorks.Game.GameBoardView.prototype._Winner = function (shape) {
     var anchor = '<button class="btn btn-mini right">Close game</button>';
 
     if (shape == this._shape) {
         this._SetMessage("You are the winner!" + anchor, "alert-success");
+        this._PlaySound("win");
     } else {
         this._SetMessage("You have lost this game!" + anchor, "alert-error");
+        this._PlaySound("lost");
     }
 
     this._messageBox.find("button").click(function () {

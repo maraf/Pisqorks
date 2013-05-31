@@ -181,14 +181,26 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\cross_15.png" />
     <Content Include="Content\images\round.png" />
     <Content Include="Content\images\cross.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\browsers.png" />
+    <Content Include="Content\images\round_15.png" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sounds\join.mp3" />
+    <Content Include="Content\sounds\win.mp3" />
+    <Content Include="Content\sounds\move.mp3" />
+    <Content Include="Content\sounds\lost.mp3" />
     <Content Include="Global.asax" />
+    <Content Include="Content\sounds\move.ogg" />
+    <Content Include="Content\sounds\win.ogg" />
+    <Content Include="Content\sounds\lost.ogg" />
+    <Content Include="Content\sounds\join.ogg" />
+    <None Include="Properties\PublishProfiles\BUILD.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="anim.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -235,6 +247,7 @@
     <Content Include="Views\Content\Feature.cshtml" />
     <Content Include="Views\Content\Register.cshtml" />
     <Content Include="Views\Content\GameCreate.cshtml" />
+    <Content Include="Views\Content\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

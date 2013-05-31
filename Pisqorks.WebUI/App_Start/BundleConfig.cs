@@ -34,7 +34,7 @@ namespace Pisqorks.WebUI
 
             );
 
-            bundles.Add(new Bundle("~/stylesheet/libraries")
+            bundles.Add(new Bundle("~/content/stylesheet")
                 .Include("~/Content/bootstrap.css")
                 .Include("~/Content/Site.css")
             );

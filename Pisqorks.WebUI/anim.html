@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>...</title>
+
+    <style>
+		#rotate {
+			position: absolute;
+			right: 10px;
+			top: 100px;
+			
+		}
+
+		#rotate div {
+			width: 190px;
+			height: 145px;
+			background: url("http://seznam.github.io/CVUT/A0M33KAJ/prednasky/05/img/cvut.png");
+            
+            animation: rotateY 4s linear infinite;
+            -moz-animation: rotateY 4s linear infinite;
+            -webkit-animation: rotateY 4s linear infinite;
+            
+            animation-play-state: paused;
+            -moz-animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+		}
+
+            #rotate div:hover {
+                animation-play-state: running;
+                -moz-animation-play-state: running;
+                -webkit-animation-play-state: running;
+            }
+            
+		@keyframes rotateY {
+			0%, 100% { transform: rotateY(0deg); }
+			50% { transform: rotateY(180deg); }
+		}
+
+		@-moz-keyframes rotateY {
+			0%, 100% { -moz-transform: rotateY(0deg); }
+			50% { -moz-transform: rotateY(180deg); }
+		}
+
+		@-webkit-keyframes rotateY {
+			0%, 100% { -webkit-transform: rotateY(0deg); }
+			50% { -webkit-transform: rotateY(180deg); }
+		}
+
+
+
+
+        div#posun {
+            animation: posun 4s linear infinite;
+            -moz-animation: posun 4s linear infinite;
+            -webkit-animation: posun 4s linear infinite;
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+
+        @keyframes posun {
+            0%, 100% { right: 0px;   top: 100px; }
+            25%      { right: 200px; top: 100px; }
+            50%      { right: 200px; top: 300px; }
+            75%      { right: 0px;   top: 300px; }
+        }
+
+		@-moz-keyframes posun {
+			0%, 100% { right: 0px; top: 100px;}
+			25% { right: 200px; top: 100px;}
+			50% { right: 200px; top: 300px;}
+			75% { right: 0px; top: 300px;}
+		}
+
+		@-webkit-keyframes posun {
+			0%, 100% { right: 0px; top: 100px;}
+			25% { right: 200px; top: 100px;}
+			50% { right: 200px; top: 300px;}
+			75% { right: 0px; top: 300px;}
+		}
+
+
+
+
+.game-board {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.game-board td {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    transition: opacity 500ms;
+    background: no-repeat 1px 1px;
+}
+
+    .game-board td.round {
+        background-image: url("content/images/round.png");
+    }
+
+    .game-board td.cross {
+        background-image: url("content/images/cross.png");
+    }
+
+    
+        .game-board tr:first-child td:first-child {
+            -webkit-animation: playPisq1 4s linear infinite;
+        }
+        .game-board tr:first-child td:last-child {
+            -webkit-animation: playPisq2 4s linear infinite;
+        }
+        .game-board tr:last-child td:first-child {
+            -webkit-animation: playPisq3 4s linear infinite;
+        }
+        .game-board tr:last-child td:last-child {
+            -webkit-animation: playPisq4 4s linear infinite;
+        }
+    
+@-webkit-keyframes playPisq1 {
+	0%, 100% { background-image: none; }
+	20%, 40%, 60%, 80% { background-image: url("content/images/round.png"); }
+}
+@-webkit-keyframes playPisq2 {
+	0%, 20%, 100% { background-image: none; }
+	40%, 60%, 80% { background-image: url("content/images/cross.png"); }
+}
+@-webkit-keyframes playPisq4 {
+	0%, 20%, 40%, 100% { background-image: none; }
+	60%, 80% { background-image: url("content/images/round.png"); }
+}
+@-webkit-keyframes playPisq3 {
+	0%, 20%, 40%, 60%, 100% { background-image: none; }
+	80% { background-image: url("content/images/cross.png"); }
+}
+	</style>
+</head>
+<body>
+
+    <div id="rotate">
+        <div></div>
+    </div>
+
+    <table class="game-board">
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="cross"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
