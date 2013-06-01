@@ -1,158 +1,54 @@
-﻿<!doctype html>
-<html>
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>...</title>
+    <title>Simple SVG Pie Chart</title>
+    <script type="text/javascript" src="js/raphael-min.js"></script>
+    <script type="text/javascript">
+        var arc;
+        var colorArr = ["#468966", "#FFF0A5", "#FFB03B", "#B64926", "#8E2800"];
+        var pieData = [12, 4, 16];
+        var sectorAngleArr = [];
+        var total = 0;
+        var startAngle = 0;
+        var endAngle = 0;
+        var x1, x2, y1, y2 = 0;
 
-    <style>
-		#rotate {
-			position: absolute;
-			right: 10px;
-			top: 100px;
-			
-		}
-
-		#rotate div {
-			width: 190px;
-			height: 145px;
-			background: url("http://seznam.github.io/CVUT/A0M33KAJ/prednasky/05/img/cvut.png");
-            
-            animation: rotateY 4s linear infinite;
-            -moz-animation: rotateY 4s linear infinite;
-            -webkit-animation: rotateY 4s linear infinite;
-            
-            animation-play-state: paused;
-            -moz-animation-play-state: paused;
-            -webkit-animation-play-state: paused;
-		}
-
-            #rotate div:hover {
-                animation-play-state: running;
-                -moz-animation-play-state: running;
-                -webkit-animation-play-state: running;
+        function init() {
+            //CALCULATE THE TOTAL
+            for (var k = 0; k < pieData.length; k++) {
+                total += pieData[k];
             }
-            
-		@keyframes rotateY {
-			0%, 100% { transform: rotateY(0deg); }
-			50% { transform: rotateY(180deg); }
-		}
-
-		@-moz-keyframes rotateY {
-			0%, 100% { -moz-transform: rotateY(0deg); }
-			50% { -moz-transform: rotateY(180deg); }
-		}
-
-		@-webkit-keyframes rotateY {
-			0%, 100% { -webkit-transform: rotateY(0deg); }
-			50% { -webkit-transform: rotateY(180deg); }
-		}
-
-
-
-
-        div#posun {
-            animation: posun 4s linear infinite;
-            -moz-animation: posun 4s linear infinite;
-            -webkit-animation: posun 4s linear infinite;
-            background-color: blue;
-            width: 200px;
-            height: 200px;
-            position: absolute;
+            //CALCULATE THE ANGLES THAT EACH SECTOR SWIPES AND STORE IN AN ARRAY
+            for (var i = 0; i < pieData.length; i++) {
+                var angle = Math.ceil(360 * pieData[i] / total);
+                sectorAngleArr.push(angle);
+            }
+            drawArcs();
         }
 
-        @keyframes posun {
-            0%, 100% { right: 0px;   top: 100px; }
-            25%      { right: 200px; top: 100px; }
-            50%      { right: 200px; top: 300px; }
-            75%      { right: 0px;   top: 300px; }
+        function drawArcs() {
+            var html = '';
+            for (var i = 0; i < sectorAngleArr.length; i++) {
+                startAngle = endAngle;
+                endAngle = startAngle + sectorAngleArr[i];
+
+                x1 = parseInt(200 + 180 * Math.cos(Math.PI * startAngle / 180));
+                y1 = parseInt(200 + 180 * Math.sin(Math.PI * startAngle / 180));
+
+                x2 = parseInt(200 + 180 * Math.cos(Math.PI * endAngle / 180));
+                y2 = parseInt(200 + 180 * Math.sin(Math.PI * endAngle / 180));
+
+                var d = "M200,200  L" + x1 + "," + y1 + "  A180,180 0 0,1 " + x2 + "," + y2 + " z"; //1 means clockwise
+
+                html += '<path d="' + d + '" fill="' + colorArr[i] + '" />';
+            }
+            document.querySelector("#holder").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400">' + html + '</svg>';
         }
-
-		@-moz-keyframes posun {
-			0%, 100% { right: 0px; top: 100px;}
-			25% { right: 200px; top: 100px;}
-			50% { right: 200px; top: 300px;}
-			75% { right: 0px; top: 300px;}
-		}
-
-		@-webkit-keyframes posun {
-			0%, 100% { right: 0px; top: 100px;}
-			25% { right: 200px; top: 100px;}
-			50% { right: 200px; top: 300px;}
-			75% { right: 0px; top: 300px;}
-		}
-
-
-
-
-.game-board {
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.game-board td {
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    transition: opacity 500ms;
-    background: no-repeat 1px 1px;
-}
-
-    .game-board td.round {
-        background-image: url("content/images/round.png");
-    }
-
-    .game-board td.cross {
-        background-image: url("content/images/cross.png");
-    }
-
-    
-        .game-board tr:first-child td:first-child {
-            -webkit-animation: playPisq1 4s linear infinite;
-        }
-        .game-board tr:first-child td:last-child {
-            -webkit-animation: playPisq2 4s linear infinite;
-        }
-        .game-board tr:last-child td:first-child {
-            -webkit-animation: playPisq3 4s linear infinite;
-        }
-        .game-board tr:last-child td:last-child {
-            -webkit-animation: playPisq4 4s linear infinite;
-        }
-    
-@-webkit-keyframes playPisq1 {
-	0%, 100% { background-image: none; }
-	20%, 40%, 60%, 80% { background-image: url("content/images/round.png"); }
-}
-@-webkit-keyframes playPisq2 {
-	0%, 20%, 100% { background-image: none; }
-	40%, 60%, 80% { background-image: url("content/images/cross.png"); }
-}
-@-webkit-keyframes playPisq4 {
-	0%, 20%, 40%, 100% { background-image: none; }
-	60%, 80% { background-image: url("content/images/round.png"); }
-}
-@-webkit-keyframes playPisq3 {
-	0%, 20%, 40%, 60%, 100% { background-image: none; }
-	80% { background-image: url("content/images/cross.png"); }
-}
-	</style>
+    </script>
 </head>
-<body>
+<body onload="init();">
+    <div id="holder" style="width:600px; height:400px;">
 
-    <div id="rotate">
-        <div></div>
     </div>
-
-    <table class="game-board">
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td class="cross"></td>
-        </tr>
-    </table>
-
 </body>
 </html>

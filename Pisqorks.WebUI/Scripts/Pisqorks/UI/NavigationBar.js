@@ -30,14 +30,16 @@ Pisqorks.UI.NavigationBar.prototype.AddRemoteButton = function (title, url, icon
 };
 Pisqorks.UI.NavigationBar.prototype._OnRoute = function (e) {
     var content = this._layout.Content();
-    var request = this._requestPool.Create("/content" + e.Url);
-    request.AddEventListener("success", function (data) {
-        content.html(data.Content);
-    });
-    request.AddEventListener("error", function (data) {
-        content.html(data.Content);
-    });
-    request.Send();
+
+    this._requestPool
+        .Create("/content" + e.Url)
+        .OnSuccess(function (data) {
+            content.html(data.Content);
+        })
+        .OnError(function (data) {
+            content.html("Sorry, but we are unnable to load this page!");
+        })
+        .Send();
 };
 Pisqorks.UI.NavigationBar.prototype._ButtonClick = function (e) {
     this._router.Navigate(e.currentTarget.href.substr(location.origin.length));
