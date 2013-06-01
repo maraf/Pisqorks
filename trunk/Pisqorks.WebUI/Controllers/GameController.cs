@@ -57,5 +57,11 @@ namespace Pisqorks.WebUI.Controllers
         {
             return Json(GameService.GetUserActive().Select(g => g.ID));
         }
+
+        [GET("api/game/today-stats")]
+        public ActionResult TodayStats()
+        {
+            return Json(GameService.GetTodayStats(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

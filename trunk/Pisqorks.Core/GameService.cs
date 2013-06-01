@@ -104,5 +104,21 @@ namespace Pisqorks.Core
         {
             return !game.Moves.Any(m => m.X == x && m.Y == y);
         }
+
+        public TodayStatsModel GetTodayStats()
+        {
+            IEnumerable<Game> today = Games.GetByUser(UserContext.UserAccount).Where(IsTodayGame);
+            int count = today.Count();
+            int wins = today.Where(g => g.Winner == UserContext.UserAccount).Count();
+            int loses = today.Where(g => g.Winner != null && g.Winner != UserContext.UserAccount).Count();
+            return new TodayStatsModel(wins, loses, count - wins - loses);
+        }
+
+        private bool IsTodayGame(Game game)
+        {
+            DateTime started = game.Created;
+            DateTime now = DateTime.Now;
+            return started.Year == now.Year && started.Month == now.Month && started.Day == now.Day;
+        }
     }
 }

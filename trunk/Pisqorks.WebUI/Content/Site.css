@@ -260,6 +260,37 @@ ul.feature-browserlist {
     opacity: 0.5;
 }
 
+/* GAME - STATS ------------------------------------------------------------------------------- */
+
+.stats-legend {
+    position: absolute;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 5px 10px;
+    border: 1px solid #cccccc;
+}
+
+    .stats-legend li i {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        line-height: 14px;
+        vertical-align: text-top;
+        background: red;
+    }
+
+    .stats-legend li:first-child i {
+        background-color: green;
+    }
+
+    .stats-legend li:nth-child(2n) i {
+        background-color: red;
+    }
+
+    .stats-legend li:last-child i {
+        background-color: blue;
+    }
+
 /* MAKE IT SMALLER ---------------------------------------------------------------------------- */
 
 @media (max-width:980px) {

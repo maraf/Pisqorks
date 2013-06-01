@@ -51,6 +51,7 @@
     <Compile Include="IUserContext.cs" />
     <Compile Include="LocalAccount.cs" />
     <Compile Include="PlainGameStateResolver.cs" />
+    <Compile Include="TodayStatsModel.cs" />
     <Compile Include="UserAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserLog.cs" />

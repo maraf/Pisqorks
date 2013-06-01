@@ -217,6 +217,7 @@
     <Content Include="Scripts\Pisqorks\BaseObject.js" />
     <Content Include="Scripts\Pisqorks\DateFormat.js" />
     <Content Include="Scripts\Pisqorks\Game\BaseTabPage.js" />
+    <Content Include="Scripts\Pisqorks\Game\TodayStatsView.js" />
     <Content Include="Scripts\Pisqorks\Game\PlayedGamesView.js" />
     <Content Include="Scripts\Pisqorks\Game\StatsPage.js" />
     <Content Include="Scripts\Pisqorks\Game\GameHub.js" />
@@ -225,6 +226,7 @@
     <Content Include="Scripts\Pisqorks\Game\GameModule.js" />
     <Content Include="Scripts\Pisqorks\Game\GameBoardView.js" />
     <Content Include="Scripts\Pisqorks\UI\BindingManager.js" />
+    <Content Include="Scripts\Pisqorks\UI\PieChart.js" />
     <Content Include="Scripts\Pisqorks\UserContext.js" />
     <Content Include="Scripts\Pisqorks\EventBus.js" />
     <Content Include="Scripts\Pisqorks\FeatureRequest.js" />

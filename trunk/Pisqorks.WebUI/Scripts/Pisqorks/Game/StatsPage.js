@@ -8,6 +8,7 @@ Pisqorks.Game.StatsPage = function (requestPool) {
     this._requestPool = requestPool;
 
     this.PlayedGamesView = new Pisqorks.Game.PlayedGamesView(requestPool);
+    this.TodayStatsView = new Pisqorks.Game.TodayStatsView(requestPool);
 };
 Pisqorks.Game.StatsPage.prototype = Object.create(Pisqorks.Game.BaseTabPage.prototype);
 Pisqorks.Game.StatsPage.prototype.Render = function (root) {
@@ -17,4 +18,7 @@ Pisqorks.Game.StatsPage.prototype.Render = function (root) {
     this.PlayedGamesView.Render(tab.Content);
 
     var tab2 = this._CreateTab("Today stats");
+    tab2.Tab.find("a").on('shown', function (e) {
+        this.TodayStatsView.Render(tab2.Content);
+    }.bind(this));
 };
