@@ -1,6 +1,7 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// Stránky se statistikami.
 Pisqorks.Game.StatsPage = function (requestPool) {
     Pisqorks.Game.BaseTabPage.call(this);
 

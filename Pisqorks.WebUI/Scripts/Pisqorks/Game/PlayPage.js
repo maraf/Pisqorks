@@ -1,6 +1,7 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// Herní stránky obsahující lobby a rozehrané hry.
 Pisqorks.Game.PlayPage = function (requestPool) {
     Pisqorks.Game.BaseTabPage.call(this);
 

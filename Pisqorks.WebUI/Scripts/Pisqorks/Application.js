@@ -1,7 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 
 Pisqorks.Application = {
-    Started: false,
+    Started: false, 
     Layout: Pisqorks.UI.Layout,
     FeatureRequest: new Pisqorks.FeatureRequest(),
     EventBus: new Pisqorks.EventBus(),
@@ -15,6 +15,7 @@ Pisqorks.Application = {
     }
 };
 
+// Inicializuje aplikaci.
 Pisqorks.Application.Start = function () {
     if (this.Started) {
         return;
@@ -38,17 +39,21 @@ Pisqorks.Application.Start = function () {
     }
 };
 
+// Spustí požadavovanou metodu (funcName) nad všemi moduly a předá jim params.
 Pisqorks.Application._RunInModules = function(funcName, params) {
     for (var module in this.Modules) {
         this.Modules[module][funcName].apply(this.Modules[module], params);
     }
 }
 
+// Inicializuje požadavky na vlastnosti prohlížeče ve všech modulech.
 Pisqorks.Application._InitializeFeatures = function () {
     //this.FeatureRequest.Require("TEST", function () { return false }, "Some testing feature that is always missing.");
     this.FeatureRequest.Require("History", function () { return "onhashchange" in window }, "History API for navigating between application states.");
     this._RunInModules("InitializeFeatures", [this.FeatureRequest]);
 };
+
+// Zkontroluje požadavky na aplikaci.
 Pisqorks.Application._CheckFeatures = function () {
     var result = this.FeatureRequest.Check();
     if (!result.Required) {
@@ -63,6 +68,7 @@ Pisqorks.Application._CheckFeatures = function () {
     return true;
 };
 
+// Inicializuje routy ve všech modulech.
 Pisqorks.Application._InitializeRoutes = function () {
     this.Router = new Pisqorks.Router(null, this.EventBus);
 
@@ -75,18 +81,24 @@ Pisqorks.Application._InitializeRoutes = function () {
     this._RunInModules("InitializeRoutes", [this.Router]);
 };
 
+// Inicializuje RequestPool.
 Pisqorks.Application._InitializeRequestPool = function () {
     this.RequestPool.AddEventListener("loading", Pisqorks.Application._OnLoading.bind(this));
     this.RequestPool.AddEventListener("success", Pisqorks.Application._OnLoaded.bind(this));
     this.RequestPool.AddEventListener("error", Pisqorks.Application._OnLoaded.bind(this));
 };
+
+// Pokud probíhá síťová komunikace.
 Pisqorks.Application._OnLoading = function () {
     this.Layout.Loading().removeClass("hide");
 };
+
+// Pokud síťová komunikace skončila.
 Pisqorks.Application._OnLoaded = function () {
     this.Layout.Loading().addClass("hide");
 };
 
+// Inicializuje navigaci ve všech modulech.
 Pisqorks.Application._InitializeNavigation = function () {
     this.NavigationBar = new Pisqorks.UI.NavigationBar(".navbar ul.nav", this.Layout, this.Router, this.RequestPool, this.EventBus);
 
