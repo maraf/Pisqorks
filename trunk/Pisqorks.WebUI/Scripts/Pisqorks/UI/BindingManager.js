@@ -1,12 +1,16 @@
-Pisqorks = window.Pisqorks || {};
+﻿Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
-Pisqorks.UI.BindingManager = function (selector, layout, router, requestPool, eventBus) {
+// Umožňuje spárovat objekt s formulářem a zpět.
+// Párování probíhá pomocí atributu data-binding 
+// a jeho hodnota je použita pro spárování s vlastností objektu.
+Pisqorks.UI.BindingManager = function () {
     Pisqorks.BaseObject.call(this);
 
 };
 Pisqorks.UI.BindingManager.prototype = Object.create(Pisqorks.BaseObject.prototype);
 
+// Nastaví hodnoty z modelu do formuláře pod rootSelector.
 Pisqorks.UI.BindingManager.prototype.BindModel = function (rootSelector, model) {
     $(rootSelector).find("*[data-binding]").each(function (i, element) {
         $element = $(element);
@@ -25,6 +29,7 @@ Pisqorks.UI.BindingManager.prototype.BindModel = function (rootSelector, model) 
     });
 };
 
+// Nastaví hodnoty z formuláře pod rootSelector do objektu model.
 Pisqorks.UI.BindingManager.prototype.UpdateModel = function (rootSelector, model) {
     $(rootSelector).find("*[data-binding]").each(function (i, element) {
         $element = $(element);

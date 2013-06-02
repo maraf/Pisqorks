@@ -1,6 +1,7 @@
-Pisqorks = window.Pisqorks || {};
+﻿Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
+// Hlavní navigační lišta.
 Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool, eventBus) {
     Pisqorks.BaseObject.call(this);
 
@@ -13,21 +14,27 @@ Pisqorks.UI.NavigationBar = function (selector, layout, router, requestPool, eve
     this._eventBus.AddEventListener("Navigate", this._OnNavigate.bind(this));
 };
 Pisqorks.UI.NavigationBar.prototype = Object.create(Pisqorks.BaseObject.prototype);
+
+// Přidá tlačítko. Reakce na jeho klik musí být nastavena explicitně. 
+// Příznak rightButton je nepovinný a udává zda má být tlačítko napravo.
 Pisqorks.UI.NavigationBar.prototype.AddButton = function (title, url, icon, rightButton) {
     var li = $("<li><a href='" + this._router.CreateAppUrl(url) + "'>" + this._GetButtonHtml(icon) + title + "</a></li>");
 
     if (this._Default(rightButton, false)) {
         li.addClass("right");
     }
-    //li.find("a").click(this._ButtonClick.bind(this));
 
     this._container.append(li);
     return li;
 };
+
+// Přidá tlačítko, jehož klik iniciuje http request na server a získaný obsah je automaticky zobrazen v obsahu aplikace.
 Pisqorks.UI.NavigationBar.prototype.AddRemoteButton = function (title, url, icon, rightButton) {
     this._router.RegisterRoute(url, title, Pisqorks.UI.NavigationBar.prototype._OnRoute.bind(this));
     this.AddButton(title, url, icon, rightButton);
 };
+
+// Při kliku na remote tlačítko, načte obsah.
 Pisqorks.UI.NavigationBar.prototype._OnRoute = function (e) {
     var content = this._layout.Content();
 
@@ -41,16 +48,17 @@ Pisqorks.UI.NavigationBar.prototype._OnRoute = function (e) {
         })
         .Send();
 };
-Pisqorks.UI.NavigationBar.prototype._ButtonClick = function (e) {
-    this._router.Navigate(e.currentTarget.href.substr(location.origin.length));
-    e.preventDefault();
-};
+
+// Vrací html šablonu pro ikonu u tlačítka. 
+// Pokud je icon null nebo undefined, vrací prázdný řetězec.
 Pisqorks.UI.NavigationBar.prototype._GetButtonHtml = function (icon) {
     if (this._Default(icon, null) == null) {
         return "";
     }
     return "<i class='icon-" + icon + "'></i> ";
 };
+
+// Při události navigace. Aktualizuje aktivní tlačítko na liště.
 Pisqorks.UI.NavigationBar.prototype._OnNavigate = function (e) {
     this._container.find("li").removeClass("active")
     this._container.find("a[href='" + this._router.CreateAppUrl(e.Path) + "']").parent().addClass("active");

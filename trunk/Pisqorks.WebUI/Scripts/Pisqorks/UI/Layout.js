@@ -1,6 +1,7 @@
-Pisqorks = window.Pisqorks || {};
+﻿Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
+// Usnadňuje a zobecňuje přístup k html prvkům na stránce
 Pisqorks.UI.Layout = {
     _Elements: {},
     _TryGet: function(selector) {

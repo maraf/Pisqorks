@@ -1,6 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Account = window.Pisqorks.Account || {};
 
+// Modul spravující uživatelké účty.
 Pisqorks.Account.AccountModule = function (eventBus, requestPool, userContext) {
     Pisqorks.BaseModule.call(this);
 
@@ -15,6 +16,7 @@ Pisqorks.Account.AccountModule = function (eventBus, requestPool, userContext) {
 };
 Pisqorks.Account.AccountModule.prototype = Object.create(Pisqorks.BaseModule.prototype);
 
+// Přidá požadavek na LocalStorage pro uložení autentizace.
 Pisqorks.Account.AccountModule.prototype.InitializeFeatures = function (features) {
     this._features = features;
     this._features.Optional("LocalStorage", function () { return "localStorage" in window }, "Local storage for storing persistent information about you account.");
@@ -31,6 +33,8 @@ Pisqorks.Account.AccountModule.prototype.InitializeNavigation = function (navbar
     this._eventBus.AddEventListener("SignOut", handler);
     this._OnSignIn({ IsAuthneticated: false, IsAnonymous: false });
 };
+
+// Přepne tlačítka při přihlášení/odhlášení uživatele.
 Pisqorks.Account.AccountModule.prototype._OnSignIn = function (context) {
     var anonymButton = true;
     var userButton = false;
@@ -60,6 +64,7 @@ Pisqorks.Account.AccountModule.prototype._OnSignIn = function (context) {
         }
     }
 };
+
 Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
     router.RegisterRoute("/account/login", "Sign in", {
         OnLoad: this.LoginPage.Show.bind(this.LoginPage),
@@ -70,10 +75,13 @@ Pisqorks.Account.AccountModule.prototype.InitializeRoutes = function (router) {
         OnUnload: this.RegisterPage.Hide.bind(this.RegisterPage),
     });
 };
+
 Pisqorks.Account.AccountModule.prototype.Run = function () {
     this.LoginPage.Initialize();
     this.RegisterPage.Initialize();
 };
+
+// Načte informace o uživateli. Pokud nemáme nic uloženo z minula, přihlásí uživatele jako anonyma.
 Pisqorks.Account.AccountModule.prototype.LoadUserState = function (callback) {
     var onSuccess = function (result) {
         this._OnLoadUserState(result);

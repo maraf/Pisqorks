@@ -1,10 +1,15 @@
-Pisqorks = window.Pisqorks || {};
+﻿Pisqorks = window.Pisqorks || {};
 Pisqorks.UI = window.Pisqorks.UI || {};
 
+// Zobrazí koláčový graf.
 Pisqorks.UI.PieChart = function () {
     Pisqorks.BaseObject.call(this);
 };
 Pisqorks.UI.PieChart.prototype = Object.create(Pisqorks.BaseObject.prototype);
+
+// Předpočítá data z předaných parametrů. 
+// Pole dat, seznam barev - pokud je dvojnásobný než počet dat, druhá půl je použita pro obtažení částí grafu.
+// Volitelně šířka a výška (výchozí 400).
 Pisqorks.UI.PieChart.prototype.PrepareData = function (data, colors, width, height) {
     this._data = data;
     this._colors = colors;
@@ -12,6 +17,8 @@ Pisqorks.UI.PieChart.prototype.PrepareData = function (data, colors, width, heig
     this._height = this._Default(height, this._width);
     this._PrepareData();
 };
+
+// Provede vlastní předpočítání.
 Pisqorks.UI.PieChart.prototype._PrepareData = function () {
     this._angles = [];
     this._total = 0;
@@ -25,6 +32,8 @@ Pisqorks.UI.PieChart.prototype._PrepareData = function () {
         this._angles.push(angle);
     }
 };
+
+// Vykreslí graf.
 Pisqorks.UI.PieChart.prototype.Render = function (root) {
     var html = '';
     var startAngle = 0;

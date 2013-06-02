@@ -1,9 +1,9 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Account = window.Pisqorks.Account || {};
 
+// Přihlašovací dialog.
 Pisqorks.Account.LoginPage = function () {
     Pisqorks.BaseObject.call(this);
-
 
 };
 Pisqorks.Account.LoginPage.prototype = Object.create(Pisqorks.BaseObject.prototype);

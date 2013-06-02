@@ -1,6 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// Zobrazení vlastní hry.
 Pisqorks.Game.GameBoardView = function (gameID, gameHub, requestPool) {
     Pisqorks.EventHandler.call(this);
 
@@ -13,12 +14,16 @@ Pisqorks.Game.GameBoardView = function (gameID, gameHub, requestPool) {
     this._gameHub.Register(gameID, this);
 };
 Pisqorks.Game.GameBoardView.prototype = Object.create(Pisqorks.EventHandler.prototype);
+
+// Nastaví titulek záložky.
 Pisqorks.Game.GameBoardView.prototype._SetTitle = function (title) {
     this.Title = title;
 
     if (this._Default(this._tabRoot, null) != null)
         this._tabRoot.find("a").html(title);
 };
+
+// Zobrazí/aktualizuje zprávu.
 Pisqorks.Game.GameBoardView.prototype._SetMessage = function (message, type) {
     this._messageBox.html(message);
 
@@ -29,6 +34,8 @@ Pisqorks.Game.GameBoardView.prototype._SetMessage = function (message, type) {
     }
     return this._messageBox;
 };
+
+// Vykreslí základ hry.
 Pisqorks.Game.GameBoardView.prototype.Render = function (root) {
     this._root = root.Content;
     this._tabRoot = root.Tab;
@@ -38,11 +45,15 @@ Pisqorks.Game.GameBoardView.prototype.Render = function (root) {
 
     this._SetMessage("Initializing...");
 };
+
+// Při začátku hry.
 Pisqorks.Game.GameBoardView.prototype._StartGame = function (userName2, canPlay) {
     this._SetTitle("Me vs " + userName2);
     this._ChangeCanPlay(canPlay);
     this._PlaySound("join");
 };
+
+// Inicializace hry, nastavení velikosti.
 Pisqorks.Game.GameBoardView.prototype._InitializeGame = function (width, height, winningLine, shape) {
     this._width = width;
     this._height = height;
@@ -52,6 +63,8 @@ Pisqorks.Game.GameBoardView.prototype._InitializeGame = function (width, height,
     this._RenderBoard();
     this._SetMessage("Waiting for oponent...");
 };
+
+// Vykreslí herní plátno.
 Pisqorks.Game.GameBoardView.prototype._RenderBoard = function () {
     var html = "<table class='game-board'>";
     for (var y = 0; y < this._height; y++) {
@@ -66,6 +79,8 @@ Pisqorks.Game.GameBoardView.prototype._RenderBoard = function () {
     this._root.append(html);
     this._root.find("table.game-board td").click(this._OnCellClick.bind(this));
 };
+
+// Při kliku na pole herního plána.
 Pisqorks.Game.GameBoardView.prototype._OnCellClick = function(e) {
     if (this._canPlay) {
         $cell = $(e.currentTarget);
@@ -78,6 +93,8 @@ Pisqorks.Game.GameBoardView.prototype._OnCellClick = function(e) {
         }
     }
 };
+
+// Změna stav herního plátna.
 Pisqorks.Game.GameBoardView.prototype._ChangeCanPlay = function (val) {
     var table = this._root.find("table.game-board");
     if (!this._closed) {
@@ -92,12 +109,16 @@ Pisqorks.Game.GameBoardView.prototype._ChangeCanPlay = function (val) {
         table.removeClass("game-board-disabled");
     }
 };
+
+// Při přijetí informace o provedené tahu.
 Pisqorks.Game.GameBoardView.prototype._Moved = function (shape, x, y) {
     this._root.find("td[data-x=" + x + "][data-y=" + y + "]").addClass(shape == 0 ? "round" : "cross");
     this._ChangeCanPlay(shape != this._shape);
 
     this._PlaySound("move");
 };
+
+// Přehraje zvuk.
 Pisqorks.Game.GameBoardView.prototype._PlaySound = function (baseName) {
     var basePath = "Content/sounds/";
     if (this._Default(this._audioPlayer, null) == null) {
@@ -112,6 +133,8 @@ Pisqorks.Game.GameBoardView.prototype._PlaySound = function (baseName) {
         this._audioPlayer.play();
     }
 };
+
+// Nastaví informaci o vítězi.
 Pisqorks.Game.GameBoardView.prototype._Winner = function (shape) {
     var anchor = '<button class="btn btn-mini right">Close game</button>';
 
@@ -129,6 +152,8 @@ Pisqorks.Game.GameBoardView.prototype._Winner = function (shape) {
     this._closed = true;
     this._ChangeCanPlay(false);
 };
+
+// Pokud server odepře provedení minulého tahu.
 Pisqorks.Game.GameBoardView.prototype._Invalid = function (shape) {
     this._ChangeCanPlay(true);
 };

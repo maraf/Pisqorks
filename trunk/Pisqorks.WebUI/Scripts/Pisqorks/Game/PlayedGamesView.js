@@ -1,6 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// View pro přehrátí odehraných her.
 Pisqorks.Game.PlayedGamesView = function () {
     Pisqorks.BaseObject.call(this);
 

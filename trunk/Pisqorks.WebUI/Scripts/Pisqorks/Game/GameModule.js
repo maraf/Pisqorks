@@ -1,6 +1,7 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// Modul hry.
 Pisqorks.Game.GameModule = function (requestPool) {
     Pisqorks.BaseModule.call(this);
     this.PlayPage = new Pisqorks.Game.PlayPage(requestPool);

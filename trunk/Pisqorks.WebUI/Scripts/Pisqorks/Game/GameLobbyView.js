@@ -1,6 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// View pro vytvoření/přidání se do hry
 Pisqorks.Game.GameLobbyView = function (requestPool) {
     Pisqorks.BaseObject.call(this);
 
@@ -8,6 +9,8 @@ Pisqorks.Game.GameLobbyView = function (requestPool) {
     this.Title = "Lobby";
 };
 Pisqorks.Game.GameLobbyView.prototype = Object.create(Pisqorks.BaseObject.prototype);
+
+// Vykreslí seznam her a tlačíko pro vytvoření nové.
 Pisqorks.Game.GameLobbyView.prototype.Render = function (tab) {
     this._table = $("<table class='table table-condensed table-striped'><thead><tr><th>Player</th><th>Created</th><th>Board W</th><th>Board H</th><th>W. Line</th><th>Shape</th><th></th></tr></thead><tbody></tbody></table>").appendTo(tab.Content);
 
@@ -16,6 +19,8 @@ Pisqorks.Game.GameLobbyView.prototype.Render = function (tab) {
 
     this._LoadGames();
 };
+
+// Při spuštění modulu.
 Pisqorks.Game.GameLobbyView.prototype.Run = function() {
     $("#game-create-modal")
         .on("submit", function (e) {
@@ -37,10 +42,14 @@ Pisqorks.Game.GameLobbyView.prototype.Run = function() {
         })
         .modal({ show: false });
 };
+
+// Při kliku na refresh.
 Pisqorks.Game.GameLobbyView.prototype._OnRefreshClick = function (e) {
     e.preventDefault();
     this._LoadGames();
 };
+
+// Načte hry ze serveru.
 Pisqorks.Game.GameLobbyView.prototype._LoadGames = function () {
     this._table.find("tbody").html("<tr><td colspan='6'>Loading games ...</td></tr>");
 
@@ -49,6 +58,8 @@ Pisqorks.Game.GameLobbyView.prototype._LoadGames = function () {
         .OnSuccess(this._ParseGames.bind(this))
         .Send();
 };
+
+// Vykreslí informace o hrách, které čekají na připojení hráče.
 Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
     var data = JSON.parse(result.Content);
     if (data == null || data.length == 0) {
@@ -72,6 +83,8 @@ Pisqorks.Game.GameLobbyView.prototype._ParseGames = function (result) {
 
     }
 };
+
+// Při kliku na play tlačítko v řádku s hrou.
 Pisqorks.Game.GameLobbyView.prototype._PlayClick = function (e) {
     this._requestPool.Create("/api/game/join", "post")
         .AuthHeader(Pisqorks.Application.UserContext.AuthToken)
@@ -80,6 +93,8 @@ Pisqorks.Game.GameLobbyView.prototype._PlayClick = function (e) {
 
     e.preventDefault();
 };
+
+// Zpracování odpovědi serveru na připojení do hry.
 Pisqorks.Game.GameLobbyView.prototype._OnGameJoin = function (result) {
     var status = JSON.parse(result.Content);
     if (status.Joined) {
@@ -94,6 +109,8 @@ Pisqorks.Game.GameLobbyView.prototype.ShowCreate = function () {
 Pisqorks.Game.GameLobbyView.prototype.HideCreate = function () {
     $("#game-create-modal").modal('hide');
 };
+
+// Vytvoří hru.
 Pisqorks.Game.GameLobbyView.prototype._CreateGame = function (model) {
     this._requestPool.Create("/api/game/create", "post")
         .AuthHeader(Pisqorks.Application.UserContext.AuthToken)

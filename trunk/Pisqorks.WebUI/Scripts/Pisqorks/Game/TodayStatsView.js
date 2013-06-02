@@ -1,6 +1,7 @@
 var Pisqorks = window.Pisqorks || {};
 Pisqorks.Game = window.Pisqorks.Game || {};
 
+// Zobrazení grafu s dnes odehranými hrami.
 Pisqorks.Game.TodayStatsView = function (requestPool) {
     Pisqorks.BaseObject.call(this);
 

@@ -1,6 +1,7 @@
-var Pisqorks = window.Pisqorks || {};
+﻿var Pisqorks = window.Pisqorks || {};
 Pisqorks.Account = window.Pisqorks.Account || {};
 
+// Registrační dialog.
 Pisqorks.Account.RegisterPage = function (requestPool) {
     Pisqorks.BaseObject.call(this);
 
@@ -31,6 +32,7 @@ Pisqorks.Account.RegisterPage.prototype.Hide = function () {
 Pisqorks.Account.RegisterPage.prototype._OnRegister = function () {
     e.preventDefault();
 
+    // Posbírá data
     var model = {};
     var manager = new Pisqorks.UI.BindingManager();
     manager.UpdateModel("#register-modal", model);
