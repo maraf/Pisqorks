@@ -32,6 +32,8 @@ Pisqorks.Game.GameModule.prototype.InitializeRoutes = function (router) {
 };
 Pisqorks.Game.GameModule.prototype.Run = function () {
     this._playPageRoot = $("<div id='play-page' />");
+
+    this.PlayPage.LobbyView.Run();
 };
 Pisqorks.Game.GameModule.prototype._OnPlayLoad = function () {
     if (!this._playPageRoot.parent().hasClass("content-body")) {

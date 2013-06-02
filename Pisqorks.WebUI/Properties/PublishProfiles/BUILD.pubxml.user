@@ -9,16 +9,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="anim.html">
-      <publishTime>05/31/2013 11:40:13</publishTime>
+      <publishTime>06/02/2013 15:54:15</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>05/12/2013 09:29:45</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>05/31/2013 16:49:44</publishTime>
+      <publishTime>06/02/2013 17:55:34</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>05/31/2013 16:49:44</publishTime>
+      <publishTime>06/02/2013 17:55:34</publishTime>
     </File>
     <File Include="bin/AttributeRouting.dll">
       <publishTime>05/23/2013 10:20:24</publishTime>
@@ -63,13 +63,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2013 10:32:08</publishTime>
     </File>
     <File Include="bin/Pisqorks.Core.DataAccess.InMemory.dll">
-      <publishTime>05/31/2013 08:58:41</publishTime>
+      <publishTime>06/02/2013 17:55:31</publishTime>
     </File>
     <File Include="bin/Pisqorks.Core.dll">
-      <publishTime>05/31/2013 08:58:41</publishTime>
+      <publishTime>06/02/2013 17:55:31</publishTime>
     </File>
     <File Include="bin/Pisqorks.WebUI.dll">
-      <publishTime>05/31/2013 16:49:41</publishTime>
+      <publishTime>06/02/2013 17:55:31</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>05/12/2013 09:21:06</publishTime>
@@ -141,7 +141,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/31/2013 11:51:41</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>05/31/2013 12:24:27</publishTime>
+      <publishTime>06/02/2013 17:38:25</publishTime>
     </File>
     <File Include="Content/sounds/champions.mp3">
       <publishTime>05/31/2013 12:22:38</publishTime>
@@ -177,7 +177,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2013 10:32:10</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>05/31/2013 16:49:42</publishTime>
+      <publishTime>06/02/2013 17:55:32</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>05/12/2013 09:26:19</publishTime>
@@ -201,13 +201,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/25/2013 10:32:09</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Account/AccountModule.js">
-      <publishTime>05/30/2013 17:47:37</publishTime>
+      <publishTime>06/02/2013 17:51:09</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Account/LoginPage.js">
       <publishTime>05/21/2013 13:09:29</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Account/RegisterPage.js">
-      <publishTime>05/21/2013 13:09:26</publishTime>
+      <publishTime>06/02/2013 17:55:13</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Account/UserInfoView.js">
       <publishTime>05/23/2013 14:47:20</publishTime>
@@ -252,10 +252,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/30/2013 22:04:24</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Game/PlayPage.js">
-      <publishTime>05/30/2013 21:52:03</publishTime>
+      <publishTime>06/02/2013 17:06:09</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Game/StatsPage.js">
-      <publishTime>05/30/2013 21:59:21</publishTime>
+      <publishTime>06/02/2013 17:08:58</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/Game/TodayStatsView.js">
+      <publishTime>06/02/2013 17:34:51</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/Http/HttpRequest.js">
       <publishTime>05/23/2013 10:17:22</publishTime>
@@ -273,13 +276,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/12/2013 13:01:55</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/UI/NavigationBar.js">
-      <publishTime>05/15/2013 10:46:39</publishTime>
+      <publishTime>06/02/2013 15:54:15</publishTime>
+    </File>
+    <File Include="Scripts/Pisqorks/UI/PieChart.js">
+      <publishTime>06/02/2013 17:33:40</publishTime>
     </File>
     <File Include="Scripts/Pisqorks/UserContext.js">
       <publishTime>05/23/2013 09:36:37</publishTime>
     </File>
     <File Include="Views/Content/About.cshtml">
-      <publishTime>05/31/2013 10:12:43</publishTime>
+      <publishTime>06/02/2013 15:54:15</publishTime>
     </File>
     <File Include="Views/Content/Feature.cshtml">
       <publishTime>05/12/2013 15:27:03</publishTime>
@@ -288,13 +294,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/28/2013 12:07:28</publishTime>
     </File>
     <File Include="Views/Content/Home.cshtml">
-      <publishTime>05/31/2013 12:25:26</publishTime>
+      <publishTime>06/02/2013 16:57:48</publishTime>
     </File>
     <File Include="Views/Content/Login.cshtml">
       <publishTime>05/21/2013 13:10:17</publishTime>
     </File>
     <File Include="Views/Content/Register.cshtml">
-      <publishTime>05/21/2013 13:10:55</publishTime>
+      <publishTime>06/02/2013 17:41:11</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>05/12/2013 09:33:31</publishTime>

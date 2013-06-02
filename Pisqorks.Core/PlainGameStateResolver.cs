@@ -31,6 +31,9 @@ namespace Pisqorks.Core
 
                         if (CheckColRow(moves, i, j, game.BoardWidth, game.BoardHeight, game.WinningLine, moves[i, j]))
                             return true;
+
+                        if (CheckColRowReverse(moves, i, j, game.BoardWidth, game.WinningLine, moves[i, j]))
+                            return true;
                     }
                 }
             }
