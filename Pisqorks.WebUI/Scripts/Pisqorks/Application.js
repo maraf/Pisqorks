@@ -67,7 +67,7 @@ Pisqorks.Application._InitializeRoutes = function () {
     this.Router = new Pisqorks.Router(null, this.EventBus);
 
     this.Router.RegisterRoute("/", "Home", function () {
-        Pisqorks.Application.Layout.Content().html("Going to home!");
+        Pisqorks.Application.Layout.Content().html("Pisqorks home...");
     });
     this.Router.RegisterRoute("/not-found", "Not found", function () {
         Pisqorks.Application.Layout.Content().html("We are sorry, this page doesn't exist! Try to select from menu where to go...");
