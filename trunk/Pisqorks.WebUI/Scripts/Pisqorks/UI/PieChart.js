@@ -6,14 +6,7 @@ Pisqorks.UI.PieChart = function () {
 };
 Pisqorks.UI.PieChart.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.UI.PieChart.prototype.PrepareData = function (data, colors, width, height) {
-    var newData = [];
-    for (var i = 0; i < data.length; i++) {
-        //if (data[i] > 0) {
-            newData.push(data[i]);
-        //}
-    }
-
-    this._data = newData;
+    this._data = data;
     this._colors = colors;
     this._width = this._Default(width, 400);
     this._height = this._Default(height, this._width);

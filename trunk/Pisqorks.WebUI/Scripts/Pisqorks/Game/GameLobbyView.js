@@ -15,7 +15,8 @@ Pisqorks.Game.GameLobbyView.prototype.Render = function (tab) {
     $buttons.find("a[href='#/play/refresh']").click(this._OnRefreshClick.bind(this));
 
     this._LoadGames();
-
+};
+Pisqorks.Game.GameLobbyView.prototype.Run = function() {
     $("#game-create-modal")
         .on("submit", function (e) {
             e.preventDefault();
