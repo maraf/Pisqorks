@@ -8,9 +8,9 @@ Pisqorks.UI.PieChart.prototype = Object.create(Pisqorks.BaseObject.prototype);
 Pisqorks.UI.PieChart.prototype.PrepareData = function (data, colors, width, height) {
     var newData = [];
     for (var i = 0; i < data.length; i++) {
-        if (data[i] > 0) {
+        //if (data[i] > 0) {
             newData.push(data[i]);
-        }
+        //}
     }
 
     this._data = newData;
@@ -50,9 +50,9 @@ Pisqorks.UI.PieChart.prototype.Render = function (root) {
         var x2 = parseInt(w + 180 * Math.cos(Math.PI * endAngle / 180));
         var y2 = parseInt(h + 180 * Math.sin(Math.PI * endAngle / 180));
 
-        var d = "M200,200  L" + x1 + "," + y1 + "  A180,180 0 0,1 " + x2 + "," + y2 + " z"; //1 means clockwise
+        var d = "M" + w + "," + h + " L" + x1 + "," + y1 + "  A180,180 0 " + ((endAngle - startAngle > 180) ? 1 : 0) + ",1 " + x2 + "," + y2 + " z";
 
-        html += '<path d="' + d + '" fill="' + this._colors[i] + '" />';
+        html += '<path d="' + d + '" style="fill: ' + this._colors[i] + ';' + (this._colors.length == (2 * this._data.length) ? 'stroke: ' + this._colors[i + (this._data.length)] + '; stroke-width: 2;' : '') + '" />';
     }
     root.append('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="' + this._width + '" height="' + this._height + '" style="display: block;margin: 0 auto;">' + html + '</svg>');
 };

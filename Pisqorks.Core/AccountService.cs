@@ -18,6 +18,29 @@ namespace Pisqorks.Core
             UserLogs = userLogs;
         }
 
+        public UserAccount Create(string displayName, string username, string password)
+        {
+            return Accounts.Create(new UserAccount
+            {
+                Username = displayName,
+                LocalAccount = new LocalAccount
+                {
+                    Username = username,
+                    Password = password
+                }
+            });
+        }
+
+        public UserLog Login(string username, string password)
+        {
+            UserAccount account = Accounts.GetLocal(username, password);
+            if (account == null)
+                return null;
+
+            UserLog userLog = UserLogs.Create(account, true);
+            return userLog;
+        }
+
         public UserLog CreateAnonymous()
         {
             UserAccount account = new UserAccount { Username = "Anonymous" };

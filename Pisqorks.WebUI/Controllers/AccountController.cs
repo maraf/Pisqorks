@@ -30,6 +30,18 @@ namespace Pisqorks.WebUI.Controllers
             return null;
         }
 
+        [POST("api/account/register")]
+        public ActionResult Register(RegisterModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                UserAccount account = AccountService.Create(model.DisplayName, model.Username, model.Password);
+                if (account != null)
+                    return Json(new RegisterResultModel(AccountService.Login(model.Username, model.Password)));
+            }
+            return View();
+        }
+
         [POST("api/account/anonymous")]
         public ActionResult Anonymous()
         {

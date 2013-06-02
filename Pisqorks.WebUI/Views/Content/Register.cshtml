@@ -13,10 +13,10 @@
     </div>
     <div class="modal-body row">
         <div class="span4">
-            <input type="text" placeholder="Display name (visible to others)" class="input-block-level" data-binding="DisplayName" />
-            <input type="text" placeholder="User name" class="input-block-level" data-binding="Username" />
-            <input type="password" placeholder="Password" class="input-block-level" data-binding="Password" />
-            <input type="password" placeholder="Password (re-type)" class="input-block-level" data-binding="PasswordAgain" />
+            <input type="text" placeholder="Display name (visible to others)" class="input-block-level" data-binding="DisplayName" required="required" min="3" />
+            <input type="text" placeholder="User name" class="input-block-level" data-binding="Username" required="required" min="3" />
+            <input type="password" placeholder="Password" class="input-block-level" data-binding="Password" required="required" min="5" />
+            @*<input type="password" placeholder="Password (re-type)" class="input-block-level" data-binding="PasswordAgain" required="required" min="5" />*@
 
             <label class="checkbox">
                 <input type="checkbox" data-binding="SignIn" /> Sign me in after registration
