@@ -10,7 +10,7 @@ Pisqorks.Account.AccountModule = function (eventBus, requestPool, userContext) {
     this._requestPool = requestPool;
     this._userContext = userContext;
     this.LoginPage = new Pisqorks.Account.LoginPage();
-    this.RegisterPage = new Pisqorks.Account.RegisterPage();
+    this.RegisterPage = new Pisqorks.Account.RegisterPage(requestPool);
     this.UserInfoView = new Pisqorks.Account.UserInfoView("#user-info-view");
 };
 Pisqorks.Account.AccountModule.prototype = Object.create(Pisqorks.BaseModule.prototype);

@@ -17,14 +17,15 @@ Pisqorks.Game.PlayPage = function (requestPool) {
 };
 Pisqorks.Game.PlayPage.prototype = Object.create(Pisqorks.Game.BaseTabPage.prototype);
 Pisqorks.Game.PlayPage.prototype.Render = function (root) {
-    if (!this.rendered) {
+    root.html("");
+    //if (!this.rendered) {
         this._tabs = this._CreateRoot(root);
         this._lobbyTab = this._CreateTab(this.LobbyView.Title, true, true);
         this.LobbyView.Render(this._lobbyTab);
         this.rendered = true;
 
         this._InitializeCurrentGames();
-    }
+    //}
 };
 Pisqorks.Game.PlayPage.prototype._InitializeCurrentGames = function () {
     if (this.rendered) {

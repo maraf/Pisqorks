@@ -21,15 +21,15 @@ Pisqorks.Game.TodayStatsView.prototype._RenderData = function (result) {
     if (data != null) {
         var html = ''
             + '<ul class="stats-legend">'
-                + '<li><i></i> Wins</li>'
-                + '<li><i></i> Loses</li>'
-                + '<li><i></i> Unfinished</li>'
+                + '<li><i></i> Wins: ' + data.Wins + '</li>'
+                + '<li><i></i> Loses: ' + data.Loses + '</li>'
+                + '<li><i></i> Unfinished: ' + data.Unfinished + '</li>'
             + '</ul>';
         this._root.html(html);
 
 
         var pieChart = new Pisqorks.UI.PieChart();
-        pieChart.PrepareData([data.Wins, data.Loses, data.Unfinished], ["blue", "red", "green"]);
+        pieChart.PrepareData([data.Wins, data.Loses, data.Unfinished], ["#90E390", "#FA8383", "#D8E8FF", "#649864", "#BC2727", "#A2ADBF"]);
         pieChart.Render(this._root);
     } else {
         this._root.html('Unnable to ');
